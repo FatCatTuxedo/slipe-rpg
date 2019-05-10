@@ -7,6 +7,9 @@ using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
 using Slipe.MtaDefinitions;
 using System.Numerics;
+using Slipe.Server.Game;
+using Slipe.Shared.Peds;
+using Slipe.Shared.Rendering;
 
 namespace ServerSide
 {
@@ -15,12 +18,10 @@ namespace ServerSide
     {
         public vPlayer(MtaElement element) : base(element)
         {
-            // Spawn a player in Blueberry
-            OnJoin += (Player p) =>
+            this.OnSpawn += (Vector3 position, float rotation, Team team, PedModel model, int interior, int dimension) =>
             {
-                p.Spawn(new Vector3(0, 0, 5));
-                p.Camera.Target = p;
-                p.Camera.Fade(Slipe.Shared.Rendering.CameraFade.In);
+                this.Camera.Target = this;
+                this.Camera.Fade(CameraFade.In);
             };
         }
     }

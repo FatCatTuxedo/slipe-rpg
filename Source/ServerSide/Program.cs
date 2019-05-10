@@ -1,7 +1,7 @@
 ﻿
 using Slipe.Server;
 using Slipe.Server.Elements;
-using Slipe.Server.GameServer;
+using Slipe.Server.Game;
 using Slipe.Server.IO;
 using Slipe.Server.Peds;
 using Slipe.Server.Vehicles;
@@ -25,7 +25,6 @@ namespace ServerSide
         });
         static void Main(string[] args)
         {
-            new ElementManager(new ElementHelper());
             new Program();
             
         }
@@ -37,19 +36,12 @@ namespace ServerSide
         }
         public Program()
         {
-            Server.Log.WriteLine("Hello server");
-            ChatBox.WriteLine("Hello world", 0xff00ff);
-            Vehicle patriot = new Vehicle(VehicleModel.Patriot, new Vector3(0, 15, 3));
-            patriot.Sirens.Add(new Vector3(-0.6f, 1, 0.5f), Color.Red, 200);
-            patriot.Sirens.Add(new Vector3(0.6f, 1, 0.5f), new Color(0, 0, 255), 200);
-            patriot.Sirens.On = true;
-            patriot.Sirens.Silent = true;
-            /*[[
-            addEventHandler("onPlayerJoin", getRootElement(), function()
-                local element = Slipe.Shared.Elements.ElementManager.getInstance():GetElement(source)
-                this:Woopsie(element)
-            end)
-            ]]*/
+            Vehicle patriot = new Vehicle(VehicleModel.Tug, new Vector3(0, 15, 3));
+            // Spawn a player in Blueberry
+            Player.OnJoin += (Player p) =>
+            {
+                p.Spawn(new Vector3(0, 0, 5));
+            };
         }
     }
 }
