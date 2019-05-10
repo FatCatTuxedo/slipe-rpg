@@ -1,6 +1,5 @@
 ﻿using Slipe.Server;
 using Slipe.Server.Elements;
-using Slipe.Server.GameServer;
 using Slipe.Server.IO;
 using Slipe.Server.Peds;
 using Slipe.Server.Vehicles;
@@ -21,7 +20,7 @@ namespace ServerSide
             {
                 p.Spawn(new Vector3(0, 0, 5));
                 p.Camera.Target = p;
-                p.Camera.Fade(CameraFade.In);
+                p.Camera.Fade(Slipe.Shared.Rendering.CameraFade.In);
             };
         }
     }
