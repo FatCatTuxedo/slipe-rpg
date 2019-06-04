@@ -11,7 +11,7 @@ System.namespace("Slipe.Server.IO", function (namespace)
   -- Represents the ingame chatbox
   -- </summary>
   namespace.class("ChatBox", function (namespace)
-    local WriteLine, WriteLine1, Clear, SetVisible, HandleMessage, class
+    local WriteLine, WriteLine1, Clear, SetVisible
     -- <summary>
     -- Writes a line to the chatbox
     -- </summary>
@@ -55,19 +55,11 @@ System.namespace("Slipe.Server.IO", function (namespace)
       end
       return SlipeMtaDefinitions.MtaServer.ShowChat(default, visible)
     end
-    HandleMessage = function (message, playerOrResource)
-      local default = class.OnMessage
-      if default ~= nil then
-        default(message, playerOrResource)
-      end
-    end
-    class = {
+    return {
       WriteLine = WriteLine,
       WriteLine1 = WriteLine1,
       Clear = Clear,
-      SetVisible = SetVisible,
-      HandleMessage = HandleMessage
+      SetVisible = SetVisible
     }
-    return class
   end)
 end)

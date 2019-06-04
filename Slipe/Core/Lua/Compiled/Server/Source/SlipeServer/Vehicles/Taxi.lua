@@ -2,30 +2,32 @@
 local System = System
 local SlipeMtaDefinitions
 local SlipeServerVehicles
+local SystemNumerics
 System.import(function (out)
   SlipeMtaDefinitions = Slipe.MtaDefinitions
   SlipeServerVehicles = Slipe.Server.Vehicles
+  SystemNumerics = System.Numerics
 end)
 System.namespace("Slipe.Server.Vehicles", function (namespace)
   -- <summary>
   -- Represents a taxi vehicle
   -- </summary>
   namespace.class("Taxi", function (namespace)
-    local getTaxiLightOn, setTaxiLightOn, __ctor1__, __ctor2__, __ctor3__
-    -- <summary>
-    -- Create a vehicle from a model at a position
-    -- </summary>
-    __ctor1__ = function (this, model, position)
-      SlipeServerVehicles.Vehicle.__ctor__[2](this, model, position:__clone__())
+    local getTaxiLightOn, setTaxiLightOn, op_Explicit, class, __ctor1__, __ctor2__, __ctor3__
+    __ctor1__ = function (this, element)
+      SlipeServerVehicles.BaseVehicle.__ctor__[1](this, element)
     end
     -- <summary>
-    -- Create a vehicle model using all createVehicle arguments
+    -- Create a plane from a model at a position
     -- </summary>
-    __ctor2__ = function (this, model, position, rotation, numberplate, variant1, variant2)
-      SlipeServerVehicles.Vehicle.__ctor__[3](this, model, position:__clone__(), rotation:__clone__(), numberplate, variant1, variant2)
+    __ctor2__ = function (this, model, position)
+      __ctor3__(this, model, position:__clone__(), SystemNumerics.Vector3.getZero(), "", 1, 1)
     end
-    __ctor3__ = function (this, element)
-      SlipeServerVehicles.Vehicle.__ctor__[1](this, element)
+    -- <summary>
+    -- Create a plane using all createVehicle arguments
+    -- </summary>
+    __ctor3__ = function (this, model, position, rotation, numberplate, variant1, variant2)
+      SlipeServerVehicles.BaseVehicle.__ctor__[2](this, model, position:__clone__(), rotation:__clone__(), numberplate, variant1, variant2)
     end
     getTaxiLightOn = function (this)
       return SlipeMtaDefinitions.MtaShared.IsVehicleTaxiLightOn(this.element)
@@ -33,46 +35,46 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
     setTaxiLightOn = function (this, value)
       SlipeMtaDefinitions.MtaShared.SetVehicleTaxiLightOn(this.element, value)
     end
-    return {
+    op_Explicit = function (vehicle)
+      if System.is(SlipeServerVehicles.VehicleModel.FromId(vehicle:getModel()), SlipeServerVehicles.TaxiModel) then
+        return class(vehicle:getMTAElement())
+      end
+
+      System.throw((System.InvalidCastException("The vehicle is not a taxi")))
+    end
+    class = {
       __inherits__ = function (out)
         return {
-          out.Slipe.Server.Vehicles.Vehicle
+          out.Slipe.Server.Vehicles.BaseVehicle
         }
       end,
       getTaxiLightOn = getTaxiLightOn,
       setTaxiLightOn = setTaxiLightOn,
+      op_Explicit = op_Explicit,
       __ctor__ = {
         __ctor1__,
         __ctor2__,
         __ctor3__
       }
     }
+    return class
   end)
 
   -- <summary>
   -- Represents a Taxi model
   -- </summary>
   namespace.class("TaxiModel", function (namespace)
-    local getCabbie, getTaxi, class, __ctor__
+    local __ctor__
     __ctor__ = function (this, id)
-      SlipeServerVehicles.BaseVehicleModel.__ctor__(this, id)
+      SlipeServerVehicles.VehicleModel.__ctor__(this, id)
     end
-    getCabbie = function ()
-      return class(438)
-    end
-    getTaxi = function ()
-      return class(420)
-    end
-    class = {
+    return {
       __inherits__ = function (out)
         return {
-          out.Slipe.Server.Vehicles.BaseVehicleModel
+          out.Slipe.Server.Vehicles.VehicleModel
         }
       end,
-      getCabbie = getCabbie,
-      getTaxi = getTaxi,
       __ctor__ = __ctor__
     }
-    return class
   end)
 end)

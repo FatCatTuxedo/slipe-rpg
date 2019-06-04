@@ -14,8 +14,8 @@ System.namespace("Slipe.Server.Accounts", function (namespace)
   -- </summary>
   namespace.class("Ban", function (namespace)
     local getAdmin, setAdmin, getIp, getSerial, getReason, setReason, getNickname, setNickname, 
-    getTimeStamp, getUnbanTimeStamp, setUnbanTimeStamp, getAll, Remove, Remove1, HandleAdded, HandleRemoved, 
-    class, __ctor1__, __ctor2__
+    getTimeStamp, getUnbanTimeStamp, setUnbanTimeStamp, getAll, Remove, Remove1, class, __ctor1__, 
+    __ctor2__
     -- <summary>
     -- Add a ban of a specific IP and/or serial
     -- </summary>
@@ -112,18 +112,6 @@ System.namespace("Slipe.Server.Accounts", function (namespace)
     Remove1 = function (this)
       Remove(this)
     end
-    HandleAdded = function (this)
-      local default = this.OnAdded
-      if default ~= nil then
-        default()
-      end
-    end
-    HandleRemoved = function (this, responsiblePlayer)
-      local default = this.OnRemoved
-      if default ~= nil then
-        default(responsiblePlayer)
-      end
-    end
     class = {
       getAdmin = getAdmin,
       setAdmin = setAdmin,
@@ -139,8 +127,6 @@ System.namespace("Slipe.Server.Accounts", function (namespace)
       getAll = getAll,
       Remove = Remove,
       Remove1 = Remove1,
-      HandleAdded = HandleAdded,
-      HandleRemoved = HandleRemoved,
       __ctor__ = {
         __ctor1__,
         __ctor2__

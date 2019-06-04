@@ -6,21 +6,12 @@ System.import(function (out)
 end)
 System.namespace("Slipe.Server.IO", function (namespace)
   namespace.class("MtaDebug", function (namespace)
-    local HandleMessage, class
-    HandleMessage = function (this, message, level, file, line, color)
-      local default = class.OnMessage
-      if default ~= nil then
-        default(message, level, file, line, color)
-      end
-    end
-    class = {
+    return {
       __inherits__ = function (out)
         return {
           out.Slipe.Shared.IO.SharedMtaDebug
         }
-      end,
-      HandleMessage = HandleMessage
+      end
     }
-    return class
   end)
 end)

@@ -10,19 +10,58 @@ using System.Numerics;
 using Slipe.Server.Game;
 using Slipe.Shared.Peds;
 using Slipe.Shared.Rendering;
+using System.Timers;
+using System;
+using Slipe.Server.Peds.Events;
 
 namespace ServerSide
 {
     [DefaultElementClass(ElementType.Player)]
     public class vPlayer : Player
     {
+        static int timer = 0;
         public vPlayer(MtaElement element) : base(element)
         {
-            this.OnSpawn += (Vector3 position, float rotation, Team team, PedModel model, int interior, int dimension) =>
+            OnSpawn += (Player source, OnSpawnEventArgs eventArgs) =>
             {
-                this.Camera.Target = this;
-                this.Camera.Fade(CameraFade.In);
+                Camera.Target = this;
+                Camera.Fade(CameraFade.In);
+            };
+
+            OnWasted += (Ped source, OnWastedEventArgs eventArgs) =>
+            {
+                timer = 0;
+                Timer aTimer = new Timer(5000);
+                aTimer.Elapsed += OnRespawnTimer;
+                aTimer.Enabled = true;
+                respawn();
+            };
+
+            OnCommand += (Player p, OnCommandEventArgs cargs) =>
+            {
+                switch (cargs.Command)
+                {
+                    case "command1":
+                        
+                        break;
+                }
             };
         }
+        public void OnRespawnTimer(Object source, ElapsedEventArgs e)
+        {
+            timer++;
+            if (timer >= 5)
+            {
+                
+                Timer t = (Timer)source;
+                respawn();
+                t.Enabled = false;
+            }
+        }
+        public void respawn()
+        {
+            Spawn(new Vector3(0, 0, 5), PedModel.cj);
+        }
+
     }
 }

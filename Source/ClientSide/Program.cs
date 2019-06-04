@@ -8,7 +8,6 @@ namespace ClientSide
     {
         static void Main(string[] args)
         {
-            new ElementManager(new ElementHelper());
             new Program();
         }
 

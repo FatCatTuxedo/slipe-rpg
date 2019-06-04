@@ -7,7 +7,6 @@ local SlipeServerPeds
 local SlipeServerRendering
 local SlipeSharedElements
 local SlipeSharedExceptions
-local SlipeSharedIO
 local SlipeSharedPeds
 local SlipeSharedUtilities
 System.import(function (out)
@@ -18,7 +17,6 @@ System.import(function (out)
   SlipeServerRendering = Slipe.Server.Rendering
   SlipeSharedElements = Slipe.Shared.Elements
   SlipeSharedExceptions = Slipe.Shared.Exceptions
-  SlipeSharedIO = Slipe.Shared.IO
   SlipeSharedPeds = Slipe.Shared.Peds
   SlipeSharedUtilities = Slipe.Shared.Utilities
 end)
@@ -33,7 +31,7 @@ System.namespace("Slipe.Server.Peds", function (namespace)
     getMuted, setMuted, getAll, getAlive, getDead, getRandom, getCount, IsDisplayObserver, 
     Login, LogOut, Spawn, SetAnnounceValue, GetAnnounceValue, GiveMoney, Redirect, ResendACInfo, 
     ResendModInfo, SetHudComponentVisible, SetVoiceBroadCastTo, SetVoiceIgnoreFrom, TakeMoney, TakeScreenShot, PlaySoundFrontEnd, DetonateSatchels, 
-    GetFromName, initEnums, class, __ctor__
+    GetFromName, class, __ctor__
     __ctor__ = function (this, mtaElement)
       SlipeServerPeds.Ped.__ctor__[1](this, mtaElement)
       this.Camera = SlipeServerRendering.Camera(this)
@@ -178,7 +176,7 @@ System.namespace("Slipe.Server.Peds", function (namespace)
     -- <summary>
     -- Spawn the player at a certain position
     -- </summary>
-    Spawn = function (this, position, rotation, skin, interior, dimension, team)
+    Spawn = function (this, position, skin, rotation, interior, dimension, team)
       local default
       if team == nil then
         default = nil
@@ -281,11 +279,6 @@ System.namespace("Slipe.Server.Peds", function (namespace)
       if default then
         return extern
       end
-    end
-    initEnums = function (this)
-      local m = System.cast(System.Int32, System.Enum.Parse(System.typeof(SlipeSharedIO.MouseButton), "Left", true))
-      local s = System.cast(System.Int32, System.Enum.Parse(System.typeof(SlipeSharedIO.MouseButtonState), "Down", true))
-      local q = System.cast(System.Int32, System.Enum.Parse(System.typeof(SlipeSharedPeds.QuitType), "Disconnected", true))
     end
     class = {
       __inherits__ = function (out)

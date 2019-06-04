@@ -152,6 +152,7 @@ return function (out)
     load("Source.SlipeShared.Elements.ElementType")
     load("Source.SlipeShared.Elements.PhysicalElement")
     load("Source.SlipeShared.Exceptions.NullElementException")
+    load("Source.SlipeShared.Exports.ExportAttribute")
     load("Source.SlipeShared.GameWorld.GameTime")
     load("Source.SlipeShared.GameWorld.HeatHaze")
     load("Source.SlipeShared.GameWorld.SharedGarage")
@@ -372,6 +373,7 @@ return function (out)
     "Slipe.Shared.Elements.ElementManager",
     "Slipe.Shared.Elements.ElementType",
     "Slipe.Shared.Exceptions.NullElementException",
+    "Slipe.Shared.Exports.ExportAttribute",
     "Slipe.Shared.GameWorld.GameTime",
     "Slipe.Shared.GameWorld.HeatHaze",
     "Slipe.Shared.GameWorld.Weather",

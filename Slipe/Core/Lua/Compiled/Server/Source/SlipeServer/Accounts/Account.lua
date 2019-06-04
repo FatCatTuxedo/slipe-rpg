@@ -22,7 +22,7 @@ System.namespace("Slipe.Server.Accounts", function (namespace)
     local accounts, getIsGuestAccount, getName, getID, getIP, getSerial, getPlayer, getACLIdentifier, 
     getData, getAll, GetAccountsBySerial, GetAccountsByIP, GetAccountsByData, CopyFrom, GetData, SetData, 
     Remove, SetName, SetPassword, HasPermissionTo, IsInACLGroup, Get, Get1, Get2, 
-    CastMultiple, HandleDataChange, class, static, __ctor1__, __ctor2__
+    CastMultiple, class, static, __ctor1__, __ctor2__
     static = function (this)
       accounts = DictObjectAccount()
     end
@@ -194,12 +194,6 @@ System.namespace("Slipe.Server.Accounts", function (namespace)
       end
       return result
     end
-    HandleDataChange = function (this, key, value)
-      local default = this.OnDataChange
-      if default ~= nil then
-        default(key, value)
-      end
-    end
     class = {
       __inherits__ = function (out)
         return {
@@ -230,7 +224,6 @@ System.namespace("Slipe.Server.Accounts", function (namespace)
       Get1 = Get1,
       Get2 = Get2,
       CastMultiple = CastMultiple,
-      HandleDataChange = HandleDataChange,
       static = static,
       __ctor__ = {
         __ctor1__,

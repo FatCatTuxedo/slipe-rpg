@@ -18,7 +18,7 @@ System.namespace("Slipe.Server.Game", function (namespace)
     local getPassword, setPassword, getMaxPlayers, setMaxPlayers, getFPSLimit, setFPSLimit, getPort, getHTTPPort, 
     getName, getIsVoiceEnabled, config, getConfig, getTickCount, version, getVersion, console, 
     getConsole, debug, getDebug, log, getLog, getFpsLimit, setFpsLimit, SetGlitchEnabled, 
-    IsGlitchEnabled, Shutdown, HandlePlayerConnected, HandleSettingChange, HandlePreStart, HandleStart, HandleStop, class
+    IsGlitchEnabled, Shutdown
     getPassword = function ()
       return SlipeMtaDefinitions.MtaServer.GetServerPassword()
     end
@@ -106,37 +106,7 @@ System.namespace("Slipe.Server.Game", function (namespace)
     Shutdown = function (reason)
       SlipeMtaDefinitions.MtaServer.Shutdown(reason)
     end
-    HandlePlayerConnected = function (nickName, Ip, username, serial, versionNumber, versionString)
-      local default = class.OnPlayerConnect
-      if default ~= nil then
-        default(nickName, Ip, username, serial, versionNumber, versionString)
-      end
-    end
-    HandleSettingChange = function (setting, oldValue, newValue)
-      local default = class.OnSettingChange
-      if default ~= nil then
-        default(setting, oldValue, newValue)
-      end
-    end
-    HandlePreStart = function (resource)
-      local default = class.OnPreStart
-      if default ~= nil then
-        default(resource)
-      end
-    end
-    HandleStart = function (resource)
-      local default = class.OnStart
-      if default ~= nil then
-        default(resource)
-      end
-    end
-    HandleStop = function (resource, wasDeleted)
-      local default = class.OnStop
-      if default ~= nil then
-        default(resource, wasDeleted)
-      end
-    end
-    class = {
+    return {
       getPassword = getPassword,
       setPassword = setPassword,
       getMaxPlayers = getMaxPlayers,
@@ -157,13 +127,7 @@ System.namespace("Slipe.Server.Game", function (namespace)
       setFpsLimit = setFpsLimit,
       SetGlitchEnabled = SetGlitchEnabled,
       IsGlitchEnabled = IsGlitchEnabled,
-      Shutdown = Shutdown,
-      HandlePlayerConnected = HandlePlayerConnected,
-      HandleSettingChange = HandleSettingChange,
-      HandlePreStart = HandlePreStart,
-      HandleStart = HandleStart,
-      HandleStop = HandleStop
+      Shutdown = Shutdown
     }
-    return class
   end)
 end)

@@ -53,7 +53,7 @@ System.namespace("Slipe.Shared.Elements", function (namespace)
     -- Registers an element class
     -- </summary>
     RegisterElement = function (this, element)
-      this.elements:Add(element:getMTAElement(), element)
+      this.elements:set(element:getMTAElement(), element)
     end
     -- <summary>
     -- Gets a generic type class instance given a certain MTA element
@@ -123,7 +123,9 @@ System.namespace("Slipe.Shared.Elements", function (namespace)
 
       local mtaElements = SlipeMtaDefinitions.MtaShared.GetListFromTable(SlipeMtaDefinitions.MtaClient.GetElementsByType(this.defaultElementTypeNames:get(System.typeof(T)), startAt:getMTAElement(), streamedIn), "element")
       for _, mtaElement in System.each(mtaElements) do
-        local element = GetElement(this, System.cast(SlipeMtaDefinitions.MtaElement, mtaElement), T)
+        System.Console.WriteLine("HHH")
+        local element = GetElement(this, mtaElement, T)
+        System.Console.WriteLine("HHEE")
         if element ~= nil then
           elements:Add(element)
         end
