@@ -8,7 +8,19 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       this.Items = items
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "FileName", 0x6, System.String },
+            { "Items", 0x6, System.Array(System.Object) }
+          },
+          methods = {
+            { ".ctor", 0x204, nil, System.Object, System.Array(System.Object) }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

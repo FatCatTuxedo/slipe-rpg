@@ -14,7 +14,19 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       this.Recipient = SlipeSharedElements.ElementManager.getInstance():GetElement(recipient, SlipeServerPeds.Player)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Message", 0x6, System.String },
+            { "Recipient", 0x6, out.Slipe.Server.Peds.Player }
+          },
+          methods = {
+            { ".ctor", 0x204, nil, System.Object, out.Slipe.MtaDefinitions.MtaElement }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

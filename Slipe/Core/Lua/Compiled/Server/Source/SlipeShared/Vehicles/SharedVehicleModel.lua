@@ -38,7 +38,29 @@ System.namespace("Slipe.Shared.Vehicles", function (namespace)
       getName = getName,
       getOriginalHandling = getOriginalHandling,
       static = static,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          fields = {
+            { "boatModels", 0xB, System.Array(System.Int32) },
+            { "helicopterModels", 0xB, System.Array(System.Int32) },
+            { "planeModels", 0xB, System.Array(System.Int32) },
+            { "taxiModels", 0xB, System.Array(System.Int32) },
+            { "trailerModels", 0xB, System.Array(System.Int32) },
+            { "trainModels", 0xB, System.Array(System.Int32) },
+            { "turretedModels", 0xB, System.Array(System.Int32) }
+          },
+          properties = {
+            { "Id", 0x6, System.Int32 },
+            { "Name", 0x206, System.String, getName },
+            { "OriginalHandling", 0x206, out.Slipe.Shared.Vehicles.Handling, getOriginalHandling }
+          },
+          methods = {
+            { ".ctor", 0x103, nil, System.Int32 }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

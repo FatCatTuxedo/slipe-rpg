@@ -13,7 +13,20 @@ System.namespace("Slipe.Server.Accounts.Events", function (namespace)
       this.Value = System.cast(System.String, value)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Account", 0x6, out.Slipe.Server.Accounts.Account },
+            { "Key", 0x6, System.String },
+            { "Value", 0x6, System.String }
+          },
+          methods = {
+            { ".ctor", 0x304, nil, out.Slipe.MtaDefinitions.MtaAccount, System.Object, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

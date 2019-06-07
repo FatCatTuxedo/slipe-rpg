@@ -19,7 +19,21 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       DamageType = 0,
       BodyPart = 0,
       Loss = 0,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Attacker", 0x6, out.Slipe.Server.Peds.Player },
+            { "BodyPart", 0x6, System.Int32 },
+            { "DamageType", 0x6, System.Int32 },
+            { "Loss", 0x6, System.Single }
+          },
+          methods = {
+            { ".ctor", 0x404, nil, out.Slipe.MtaDefinitions.MtaElement, System.Object, System.Object, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

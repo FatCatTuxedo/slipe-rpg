@@ -12,7 +12,19 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       this.NewElement = SlipeSharedElements.ElementManager.getInstance():GetElement(newElement, SlipeSharedElements.PhysicalElement)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "NewElement", 0x6, out.Slipe.Shared.Elements.PhysicalElement },
+            { "PreviousElement", 0x6, out.Slipe.Shared.Elements.PhysicalElement }
+          },
+          methods = {
+            { ".ctor", 0x204, nil, out.Slipe.MtaDefinitions.MtaElement, out.Slipe.MtaDefinitions.MtaElement }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

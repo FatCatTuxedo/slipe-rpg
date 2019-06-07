@@ -16,7 +16,19 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       this.ResponsiblePlayer = SlipeSharedElements.ElementManager.getInstance():GetElement(responsibleBanner, SlipeServerPeds.Player)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Ban", 0x6, out.Slipe.Server.Accounts.Ban },
+            { "ResponsiblePlayer", 0x6, out.Slipe.Server.Peds.Player }
+          },
+          methods = {
+            { ".ctor", 0x204, nil, out.Slipe.MtaDefinitions.MtaBan, out.Slipe.MtaDefinitions.MtaElement }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

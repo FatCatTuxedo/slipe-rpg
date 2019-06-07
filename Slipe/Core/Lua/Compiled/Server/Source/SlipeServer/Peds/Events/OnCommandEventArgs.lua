@@ -7,7 +7,18 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       this.Command = System.cast(System.String, command)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Command", 0x6, System.String }
+          },
+          methods = {
+            { ".ctor", 0x104, nil, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

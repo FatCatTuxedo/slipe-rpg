@@ -40,6 +40,11 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
       },
       __metadata__ = function (out)
         return {
+          methods = {
+            { ".ctor", 0x106, __ctor1__, out.Slipe.MtaDefinitions.MtaElement },
+            { ".ctor", 0x206, __ctor2__, out.Slipe.Server.Vehicles.VehicleModel, System.Numerics.Vector3 },
+            { ".ctor", 0x606, __ctor3__, out.Slipe.Server.Vehicles.VehicleModel, System.Numerics.Vector3, System.Numerics.Vector3, System.String, System.Int32, System.Int32 }
+          },
           class = { 0x6, System.new(out.Slipe.Shared.Elements.DefaultElementClassAttribute, 2, 3 --[[ElementType.Vehicle]]) }
         }
       end

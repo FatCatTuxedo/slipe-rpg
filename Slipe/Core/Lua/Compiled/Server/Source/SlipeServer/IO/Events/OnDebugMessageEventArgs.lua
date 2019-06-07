@@ -17,7 +17,22 @@ System.namespace("Slipe.Server.IO.Events", function (namespace)
     return {
       Level = 0,
       Line = 0,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Color", 0x6, out.Slipe.Shared.Utilities.Color },
+            { "File", 0x6, System.String },
+            { "Level", 0x6, System.Int32 },
+            { "Line", 0x6, System.Int32 },
+            { "Message", 0x6, System.String }
+          },
+          methods = {
+            { ".ctor", 0x704, nil, System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

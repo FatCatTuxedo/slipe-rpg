@@ -13,7 +13,18 @@ System.namespace("Slipe.Server.Vehicles.Events", function (namespace)
       this.Truck = SlipeSharedElements.ElementManager.getInstance():GetElement(truck, SlipeServerVehicles.Vehicle)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Truck", 0x6, out.Slipe.Server.Vehicles.Vehicle }
+          },
+          methods = {
+            { ".ctor", 0x104, nil, out.Slipe.MtaDefinitions.MtaElement }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

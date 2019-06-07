@@ -12,7 +12,19 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       this.NewAccount = SlipeServerAccounts.Account.Get(newAccount)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "NewAccount", 0x6, out.Slipe.Server.Accounts.Account },
+            { "PreviousAccount", 0x6, out.Slipe.Server.Accounts.Account }
+          },
+          methods = {
+            { ".ctor", 0x204, nil, out.Slipe.MtaDefinitions.MtaAccount, out.Slipe.MtaDefinitions.MtaAccount }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

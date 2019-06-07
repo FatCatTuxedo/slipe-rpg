@@ -7,7 +7,18 @@ System.namespace("Slipe.Server.IO.Events", function (namespace)
       this.Message = System.cast(System.String, message)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Message", 0x6, System.String }
+          },
+          methods = {
+            { ".ctor", 0x104, nil, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

@@ -10,7 +10,20 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
     end
     return {
       IsChangedByUser = false,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "IsChangedByUser", 0x6, System.Boolean },
+            { "NewNickname", 0x6, System.String },
+            { "OldNickname", 0x6, System.String }
+          },
+          methods = {
+            { ".ctor", 0x304, nil, System.Object, System.Object, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

@@ -15,7 +15,21 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
     end
     return {
       D3d9Size = 0,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "D3d9Md5", 0x6, System.String },
+            { "D3d9Sha256", 0x6, System.String },
+            { "D3d9Size", 0x6, System.Int32 },
+            { "DetectedAcList", 0x6, System.Array(System.String) }
+          },
+          methods = {
+            { ".ctor", 0x404, nil, System.Object, System.Object, System.Object, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

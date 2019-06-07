@@ -34,6 +34,7 @@ namespace ServerSide
             Vehicle fastboi = new Vehicle(VehicleModel.Cars.Banshee, new Vector3(0, 15, 3));
             // Spawn a player in Blueberry
             Player.OnJoin += (Player p, OnJoinEventArgs eventArgs) => p.Spawn(new Vector3(0, 0, 5), Slipe.Shared.Peds.PedModel.cj);
+            Commands.addCommands();
         }
     }
 }

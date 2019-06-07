@@ -13,7 +13,18 @@ System.namespace("Slipe.Server.Pickups.Events", function (namespace)
       this.Player = SlipeSharedElements.ElementManager.getInstance():GetElement(usingPlayer, SlipeServerPeds.Player)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Player", 0x6, out.Slipe.Server.Peds.Player }
+          },
+          methods = {
+            { ".ctor", 0x104, nil, out.Slipe.MtaDefinitions.MtaElement }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

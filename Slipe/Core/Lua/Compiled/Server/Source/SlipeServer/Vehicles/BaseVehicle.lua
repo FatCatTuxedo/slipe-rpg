@@ -20,7 +20,7 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
   namespace.class("BaseVehicle", function (namespace)
     local getControler, getOccupants, getSirens1, setSirens1, getVariant1, setVariant1, setRespawnEnabled, setRespawnDelay, 
     getRespawnPosition, setRespawnPosition, getRespawnRotation, setRespawnRotation, setIdleRespawnDelay, Blow, GetOccupant, ResetExplosionTime, 
-    ResetIdleTime, Spawn, Spawn1, Respawn, __ctor1__, __ctor2__
+    ResetIdleTime, Spawn, Spawn1, Respawn, class, __ctor1__, __ctor2__
     __ctor1__ = function (this, element)
       SlipeSharedVehicles.SharedVehicle.__ctor__(this, element)
     end
@@ -127,7 +127,7 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
     Respawn = function (this)
       return SlipeMtaDefinitions.MtaServer.RespawnVehicle(this.element)
     end
-    return {
+    class = {
       __inherits__ = function (out)
         return {
           out.Slipe.Shared.Vehicles.SharedVehicle
@@ -156,7 +156,49 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
       __ctor__ = {
         __ctor1__,
         __ctor2__
-      }
+      },
+      __metadata__ = function (out)
+        return {
+          fields = {
+            { "s_sirens", 0x1, out.Slipe.Server.Vehicles.Sirens }
+          },
+          properties = {
+            { "Controler", 0x206, out.Slipe.Server.Peds.Player, getControler },
+            { "IdleRespawnDelay", 0x306, System.Int32, setIdleRespawnDelay },
+            { "Occupants", 0x206, System.Dictionary(System.Int32, out.Slipe.Server.Peds.Player), getOccupants },
+            { "RespawnDelay", 0x306, System.Int32, setRespawnDelay },
+            { "RespawnEnabled", 0x306, System.Boolean, setRespawnEnabled },
+            { "RespawnPosition", 0x106, System.Numerics.Vector3, getRespawnPosition, setRespawnPosition },
+            { "RespawnRotation", 0x106, System.Numerics.Vector3, getRespawnRotation, setRespawnRotation },
+            { "Sirens", 0x106, out.Slipe.Server.Vehicles.Sirens, getSirens1, setSirens1 },
+            { "Variant", 0x106, System.Tuple, getVariant1, setVariant1 }
+          },
+          methods = {
+            { ".ctor", 0x106, __ctor1__, out.Slipe.MtaDefinitions.MtaElement },
+            { ".ctor", 0x603, __ctor2__, out.Slipe.Server.Vehicles.VehicleModel, System.Numerics.Vector3, System.Numerics.Vector3, System.String, System.Int32, System.Int32 },
+            { "Blow", 0x186, Blow, System.Boolean, System.Boolean },
+            { "GetOccupant", 0x186, GetOccupant, System.Int32, out.Slipe.Server.Peds.Player },
+            { "ResetExplosionTime", 0x86, ResetExplosionTime, System.Boolean },
+            { "ResetIdleTime", 0x86, ResetIdleTime, System.Boolean },
+            { "Respawn", 0x86, Respawn, System.Boolean },
+            { "Spawn", 0x286, Spawn, System.Numerics.Vector3, System.Numerics.Vector3, System.Boolean },
+            { "Spawn", 0x186, Spawn1, System.Numerics.Vector3, System.Boolean }
+          },
+          events = {
+            { "OnDamage", 0x6, System.Delegate(class, out.Slipe.Server.Vehicles.Events.OnDamageEventArgs, System.Void) },
+            { "OnCollisionShapeHit", 0x6, System.Delegate(class, out.Slipe.Shared.Elements.Events.OnCollisionShapeHitEventArgs, System.Void) },
+            { "OnCollisionShapeLeave", 0x6, System.Delegate(class, out.Slipe.Shared.Elements.Events.OnCollisionShapeLeaveEventArgs, System.Void) },
+            { "OnEnter", 0x6, System.Delegate(class, out.Slipe.Server.Vehicles.Events.OnEnterEventArgs, System.Void) },
+            { "OnExit", 0x6, System.Delegate(class, out.Slipe.Server.Vehicles.Events.OnExitEventArgs, System.Void) },
+            { "OnStartEnter", 0x6, System.Delegate(class, out.Slipe.Server.Vehicles.Events.OnStartEnterEventArgs, System.Void) },
+            { "OnStartExit", 0x6, System.Delegate(class, out.Slipe.Server.Vehicles.Events.OnStartExitEventArgs, System.Void) },
+            { "OnExplode", 0x6, System.Delegate(class, out.Slipe.Server.Vehicles.Events.OnExplodeEventArgs, System.Void) },
+            { "OnRespawn", 0x6, System.Delegate(class, out.Slipe.Server.Vehicles.Events.OnRespawnEventArgs, System.Void) }
+          },
+          class = { 0x6 }
+        }
+      end
     }
+    return class
   end)
 end)

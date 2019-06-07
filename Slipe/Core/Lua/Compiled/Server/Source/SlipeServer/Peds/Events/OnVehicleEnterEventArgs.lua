@@ -18,7 +18,20 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
     end
     return {
       Seat = 0,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "JackedPlayer", 0x6, out.Slipe.Server.Peds.Player },
+            { "Seat", 0x6, System.Int32 },
+            { "Vehicle", 0x6, out.Slipe.Server.Vehicles.BaseVehicle }
+          },
+          methods = {
+            { ".ctor", 0x304, nil, out.Slipe.MtaDefinitions.MtaElement, System.Object, out.Slipe.MtaDefinitions.MtaElement }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

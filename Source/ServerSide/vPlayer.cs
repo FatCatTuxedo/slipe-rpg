@@ -19,7 +19,7 @@ namespace ServerSide
     [DefaultElementClass(ElementType.Player)]
     public class vPlayer : Player
     {
-        static int timer = 0;
+        int timer = 0;
         public vPlayer(MtaElement element) : base(element)
         {
             OnSpawn += (Player source, OnSpawnEventArgs eventArgs) =>
@@ -31,20 +31,10 @@ namespace ServerSide
             OnWasted += (Ped source, OnWastedEventArgs eventArgs) =>
             {
                 timer = 0;
-                Timer aTimer = new Timer(5000);
+                Timer aTimer = new Timer(1000);
                 aTimer.Elapsed += OnRespawnTimer;
                 aTimer.Enabled = true;
-                respawn();
-            };
-
-            OnCommand += (Player p, OnCommandEventArgs cargs) =>
-            {
-                switch (cargs.Command)
-                {
-                    case "command1":
-                        
-                        break;
-                }
+                //respawn();
             };
         }
         public void OnRespawnTimer(Object source, ElapsedEventArgs e)

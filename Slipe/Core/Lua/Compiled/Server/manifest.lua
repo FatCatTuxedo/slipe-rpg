@@ -44,7 +44,7 @@ return function (out)
     load("Source.SlipeServer.IO.CommandHandler")
     load("Source.SlipeServer.IO.Events.OnChatMessageEventArgs")
     load("Source.SlipeServer.IO.Events.OnDebugMessageEventArgs")
-    load("Source.SlipeServer.IO.MtaConsole")
+    load("Source.SlipeServer.IO.MTAConsole")
     load("Source.SlipeServer.IO.MTADebug")
     load("Source.SlipeServer.IO.ServerLog")
     load("Source.SlipeServer.Markers.Marker")
@@ -176,6 +176,7 @@ return function (out)
     load("Source.SlipeShared.Radar.SharedBlip")
     load("Source.SlipeShared.Radar.SharedRadarArea")
     load("Source.SlipeShared.Resources.SharedResource")
+    load("Source.SlipeShared.RPC.BaseRPC")
     load("Source.SlipeShared.RPC.BasicIncomingRPC")
     load("Source.SlipeShared.RPC.BasicOutgoingRPC")
     load("Source.SlipeShared.RPC.EmptyIncomingRPC")
@@ -391,6 +392,7 @@ return function (out)
     "Slipe.Shared.Peds.QuitType",
     "Slipe.Shared.Pickups.Events.OnHitArgs",
     "Slipe.Shared.Pickups.Events.OnLeaveArgs",
+    "Slipe.Shared.RPC.BaseRPC",
     "Slipe.Shared.Rpc.BasicIncomingRpc",
     "Slipe.Shared.Rpc.BasicOutgoingRpc",
     "Slipe.Shared.Rpc.EmptyIncomingRpc",

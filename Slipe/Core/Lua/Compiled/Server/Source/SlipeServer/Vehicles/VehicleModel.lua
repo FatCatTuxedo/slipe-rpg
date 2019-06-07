@@ -76,7 +76,28 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
         getQuadbike = getQuadbike,
         getBike = getBike,
         getBmx = getBmx,
-        getMountainbike = getMountainbike
+        getMountainbike = getMountainbike,
+        __metadata__ = function (out)
+          return {
+            properties = {
+              { "Bf400", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBf400 },
+              { "Bike", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBike },
+              { "Bmx", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBmx },
+              { "Faggio", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getFaggio },
+              { "Fcr900", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getFcr900 },
+              { "Freeway", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getFreeway },
+              { "Hpv1000", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getHpv1000 },
+              { "Mountainbike", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getMountainbike },
+              { "Nrg500", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getNrg500 },
+              { "Pcj600", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getPcj600 },
+              { "Pizzaboy", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getPizzaboy },
+              { "Quadbike", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getQuadbike },
+              { "Sanchez", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getSanchez },
+              { "Wayfarer", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getWayfarer }
+            },
+            class = { 0xE }
+          }
+        end
       }
     end)
     namespace.class("Cars", function (namespace)
@@ -524,6 +545,92 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
       getStratum = function ()
         return SlipeServerVehicles.VehicleModel(561)
       end
+      --too many upvalues (limit is 60)
+      local const = {}
+      const.getHotringracer3 = getHotringracer3
+      const.getHuntley = getHuntley
+      const.getHustler = getHustler
+      const.getInfernus = getInfernus
+      const.getIntruder = getIntruder
+      const.getJester = getJester
+      const.getJourney = getJourney
+      const.getKart = getKart
+      const.getLandstalker = getLandstalker
+      const.getLinerunner = getLinerunner
+      const.getMajestic = getMajestic
+      const.getManana = getManana
+      const.getMerit = getMerit
+      const.getMesa = getMesa
+      const.getMonster1 = getMonster1
+      const.getMonster2 = getMonster2
+      const.getMonster3 = getMonster3
+      const.getMoonbeam = getMoonbeam
+      const.getMower = getMower
+      const.getMrwhoopee = getMrwhoopee
+      const.getMule = getMule
+      const.getNebula = getNebula
+      const.getNewsvan = getNewsvan
+      const.getOceanic = getOceanic
+      const.getPacker = getPacker
+      const.getPatriot = getPatriot
+      const.getPerennial = getPerennial
+      const.getPhoenix = getPhoenix
+      const.getPicador = getPicador
+      const.getPolicecarls = getPolicecarls
+      const.getPolicecarlv = getPolicecarlv
+      const.getPolicecarsf = getPolicecarsf
+      const.getPoliceranger = getPoliceranger
+      const.getPony = getPony
+      const.getPremier = getPremier
+      const.getPrevion = getPrevion
+      const.getPrimo = getPrimo
+      const.getRancher = getRancher
+      const.getRcBandit = getRcBandit
+      const.getRcFlowerpot = getRcFlowerpot
+      const.getRcTiger = getRcTiger
+      const.getRegina = getRegina
+      const.getRemington = getRemington
+      const.getRoadtrain = getRoadtrain
+      const.getRomero = getRomero
+      const.getRumpo = getRumpo
+      const.getSabre = getSabre
+      const.getSadler = getSadler
+      const.getSandking = getSandking
+      const.getSavanna = getSavanna
+      const.getSecuricar = getSecuricar
+      const.getSentinel = getSentinel
+      const.getSlamvan = getSlamvan
+      const.getSolair = getSolair
+      const.getStafford = getStafford
+      const.getStallion = getStallion
+      const.getStratum = getStratum
+      const.getStretch = getStretch
+      const.getSultan = getSultan
+      const.getSunrise = getSunrise
+      const.getSupergt = getSupergt
+      const.getSweeper = getSweeper
+      const.getTahoma = getTahoma
+      const.getTampa = getTampa
+      const.getTanker = getTanker
+      const.getTornado = getTornado
+      const.getTowtruck = getTowtruck
+      const.getTractor = getTractor
+      const.getTrashmaster = getTrashmaster
+      const.getTug = getTug
+      const.getTurismo = getTurismo
+      const.getUranus = getUranus
+      const.getUtilityvan = getUtilityvan
+      const.getVincent = getVincent
+      const.getVirgo = getVirgo
+      const.getVoodoo = getVoodoo
+      const.getVortex = getVortex
+      const.getWalton = getWalton
+      const.getWashington = getWashington
+      const.getWillard = getWillard
+      const.getWindsor = getWindsor
+      const.getYankee = getYankee
+      const.getYosemite = getYosemite
+      const.getZr350 = getZr350
       return {
         getAlpha = getAlpha,
         getBanshee = getBanshee,
@@ -666,7 +773,156 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
         getRomero = getRomero,
         getSandking = getSandking,
         getSolair = getSolair,
-        getStratum = getStratum
+        getStratum = getStratum,
+        __metadata__ = function (out)
+          return {
+            properties = {
+              { "Admiral", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getAdmiral },
+              { "Alpha", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getAlpha },
+              { "Ambulance", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getAmbulance },
+              { "Baggage", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBaggage },
+              { "Bandito", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBandito },
+              { "Banshee", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBanshee },
+              { "Barracks", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBarracks },
+              { "Benson", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBenson },
+              { "Berkleysrcvan", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBerkleysrcvan },
+              { "Bfinjection", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBfinjection },
+              { "Blackboxville", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBlackboxville },
+              { "Blade", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBlade },
+              { "Blistacompact", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBlistacompact },
+              { "Bloodringbanger", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBloodringbanger },
+              { "Bobcat", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBobcat },
+              { "Boxville", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBoxville },
+              { "Bravura", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBravura },
+              { "Broadway", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBroadway },
+              { "Buccaneer", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBuccaneer },
+              { "Buffalo", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBuffalo },
+              { "Bullet", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBullet },
+              { "Burrito", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBurrito },
+              { "Bus", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getBus },
+              { "Caddy", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getCaddy },
+              { "Cadrona", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getCadrona },
+              { "Camper", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getCamper },
+              { "Cementtruck", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getCementtruck },
+              { "Cheetah", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getCheetah },
+              { "Clover", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getClover },
+              { "Club", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getClub },
+              { "Coach", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getCoach },
+              { "Combineharvester", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getCombineharvester },
+              { "Comet", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getComet },
+              { "Dft30", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getDft30 },
+              { "Dozer", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getDozer },
+              { "Dumper", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getDumper },
+              { "Dune", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getDune },
+              { "Elegant", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getElegant },
+              { "Elegy", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getElegy },
+              { "Emperor", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getEmperor },
+              { "Enforcer", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getEnforcer },
+              { "Esperanto", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getEsperanto },
+              { "Euros", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getEuros },
+              { "Fbirancher", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getFbirancher },
+              { "Fbitruck", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getFbitruck },
+              { "Feltzer", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getFeltzer },
+              { "Firetruckladder", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getFiretruckladder },
+              { "Flash", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getFlash },
+              { "Flatbed", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getFlatbed },
+              { "Forklift", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getForklift },
+              { "Fortune", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getFortune },
+              { "Glendale", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getGlendale },
+              { "Greenwood", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getGreenwood },
+              { "Hermes", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getHermes },
+              { "Hotdog", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getHotdog },
+              { "Hotknife", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getHotknife },
+              { "Hotringracer1", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getHotringracer1 },
+              { "Hotringracer2", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, getHotringracer2 },
+              { "Hotringracer3", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getHotringracer3 },
+              { "Huntley", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getHuntley },
+              { "Hustler", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getHustler },
+              { "Infernus", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getInfernus },
+              { "Intruder", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getIntruder },
+              { "Jester", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getJester },
+              { "Journey", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getJourney },
+              { "Kart", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getKart },
+              { "Landstalker", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getLandstalker },
+              { "Linerunner", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getLinerunner },
+              { "Majestic", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getMajestic },
+              { "Manana", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getManana },
+              { "Merit", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getMerit },
+              { "Mesa", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getMesa },
+              { "Monster1", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getMonster1 },
+              { "Monster2", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getMonster2 },
+              { "Monster3", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getMonster3 },
+              { "Moonbeam", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getMoonbeam },
+              { "Mower", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getMower },
+              { "Mrwhoopee", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getMrwhoopee },
+              { "Mule", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getMule },
+              { "Nebula", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getNebula },
+              { "Newsvan", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getNewsvan },
+              { "Oceanic", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getOceanic },
+              { "Packer", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPacker },
+              { "Patriot", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPatriot },
+              { "Perennial", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPerennial },
+              { "Phoenix", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPhoenix },
+              { "Picador", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPicador },
+              { "Policecarls", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPolicecarls },
+              { "Policecarlv", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPolicecarlv },
+              { "Policecarsf", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPolicecarsf },
+              { "Policeranger", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPoliceranger },
+              { "Pony", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPony },
+              { "Premier", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPremier },
+              { "Previon", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPrevion },
+              { "Primo", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getPrimo },
+              { "Rancher", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getRancher },
+              { "RcBandit", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getRcBandit },
+              { "RcFlowerpot", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getRcFlowerpot },
+              { "RcTiger", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getRcTiger },
+              { "Regina", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getRegina },
+              { "Remington", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getRemington },
+              { "Roadtrain", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getRoadtrain },
+              { "Romero", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getRomero },
+              { "Rumpo", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getRumpo },
+              { "Sabre", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSabre },
+              { "Sadler", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSadler },
+              { "Sandking", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSandking },
+              { "Savanna", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSavanna },
+              { "Securicar", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSecuricar },
+              { "Sentinel", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSentinel },
+              { "Slamvan", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSlamvan },
+              { "Solair", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSolair },
+              { "Stafford", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getStafford },
+              { "Stallion", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getStallion },
+              { "Stratum", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getStratum },
+              { "Stretch", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getStretch },
+              { "Sultan", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSultan },
+              { "Sunrise", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSunrise },
+              { "Supergt", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSupergt },
+              { "Sweeper", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getSweeper },
+              { "Tahoma", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getTahoma },
+              { "Tampa", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getTampa },
+              { "Tanker", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getTanker },
+              { "Tornado", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getTornado },
+              { "Towtruck", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getTowtruck },
+              { "Tractor", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getTractor },
+              { "Trashmaster", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getTrashmaster },
+              { "Tug", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getTug },
+              { "Turismo", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getTurismo },
+              { "Uranus", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getUranus },
+              { "Utilityvan", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getUtilityvan },
+              { "Vincent", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getVincent },
+              { "Virgo", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getVirgo },
+              { "Voodoo", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getVoodoo },
+              { "Vortex", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getVortex },
+              { "Walton", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getWalton },
+              { "Washington", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getWashington },
+              { "Willard", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getWillard },
+              { "Windsor", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getWindsor },
+              { "Yankee", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getYankee },
+              { "Yosemite", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getYosemite },
+              { "Zr350", 0x20E, out.Slipe.Server.Vehicles.VehicleModel, const.getZr350 }
+            },
+            class = { 0xE }
+          }
+        end
       }
     end)
     namespace.class("Boats", function (namespace)
@@ -712,7 +968,24 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
         getReefer = getReefer,
         getSpeeder = getSpeeder,
         getSqualo = getSqualo,
-        getTropic = getTropic
+        getTropic = getTropic,
+        __metadata__ = function (out)
+          return {
+            properties = {
+              { "Coastguard", 0x20E, out.Slipe.Server.Vehicles.BoatModel, getCoastguard },
+              { "Dinghy", 0x20E, out.Slipe.Server.Vehicles.BoatModel, getDinghy },
+              { "Jetmax", 0x20E, out.Slipe.Server.Vehicles.BoatModel, getJetmax },
+              { "Launch", 0x20E, out.Slipe.Server.Vehicles.BoatModel, getLaunch },
+              { "Marquis", 0x20E, out.Slipe.Server.Vehicles.BoatModel, getMarquis },
+              { "Predator", 0x20E, out.Slipe.Server.Vehicles.BoatModel, getPredator },
+              { "Reefer", 0x20E, out.Slipe.Server.Vehicles.BoatModel, getReefer },
+              { "Speeder", 0x20E, out.Slipe.Server.Vehicles.BoatModel, getSpeeder },
+              { "Squalo", 0x20E, out.Slipe.Server.Vehicles.BoatModel, getSqualo },
+              { "Tropic", 0x20E, out.Slipe.Server.Vehicles.BoatModel, getTropic }
+            },
+            class = { 0xE }
+          }
+        end
       }
     end)
     namespace.class("Planes", function (namespace)
@@ -766,7 +1039,26 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
         getShamal = getShamal,
         getSkimmer = getSkimmer,
         getStuntplane = getStuntplane,
-        getRcBaron = getRcBaron
+        getRcBaron = getRcBaron,
+        __metadata__ = function (out)
+          return {
+            properties = {
+              { "Andromada", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getAndromada },
+              { "At400", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getAt400 },
+              { "Beagle", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getBeagle },
+              { "Cropduster", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getCropduster },
+              { "Dodo", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getDodo },
+              { "Hydra", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getHydra },
+              { "Nevada", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getNevada },
+              { "RcBaron", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getRcBaron },
+              { "Rustler", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getRustler },
+              { "Shamal", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getShamal },
+              { "Skimmer", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getSkimmer },
+              { "Stuntplane", 0x20E, out.Slipe.Server.Vehicles.PlaneModel, getStuntplane }
+            },
+            class = { 0xE }
+          }
+        end
       }
     end)
     namespace.class("Helicopters", function (namespace)
@@ -816,7 +1108,25 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
         getSeasparrow = getSeasparrow,
         getSparrow = getSparrow,
         getRcGoblin = getRcGoblin,
-        getRcRaider = getRcRaider
+        getRcRaider = getRcRaider,
+        __metadata__ = function (out)
+          return {
+            properties = {
+              { "Cargobob", 0x20E, out.Slipe.Server.Vehicles.HelicopterModel, getCargobob },
+              { "Hunter", 0x20E, out.Slipe.Server.Vehicles.HelicopterModel, getHunter },
+              { "Leviathan", 0x20E, out.Slipe.Server.Vehicles.HelicopterModel, getLeviathan },
+              { "Maverick", 0x20E, out.Slipe.Server.Vehicles.HelicopterModel, getMaverick },
+              { "Newschopper", 0x20E, out.Slipe.Server.Vehicles.HelicopterModel, getNewschopper },
+              { "PoliceMaverick", 0x20E, out.Slipe.Server.Vehicles.HelicopterModel, getPoliceMaverick },
+              { "Raindance", 0x20E, out.Slipe.Server.Vehicles.HelicopterModel, getRaindance },
+              { "RcGoblin", 0x20E, out.Slipe.Server.Vehicles.HelicopterModel, getRcGoblin },
+              { "RcRaider", 0x20E, out.Slipe.Server.Vehicles.HelicopterModel, getRcRaider },
+              { "Seasparrow", 0x20E, out.Slipe.Server.Vehicles.HelicopterModel, getSeasparrow },
+              { "Sparrow", 0x20E, out.Slipe.Server.Vehicles.HelicopterModel, getSparrow }
+            },
+            class = { 0xE }
+          }
+        end
       }
     end)
     namespace.class("Trailers", function (namespace)
@@ -858,7 +1168,23 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
         getGasSemi = getGasSemi,
         getSemi = getSemi,
         getOpenSemi = getOpenSemi,
-        getSmallSemi = getSmallSemi
+        getSmallSemi = getSmallSemi,
+        __metadata__ = function (out)
+          return {
+            properties = {
+              { "BaggageCovered", 0x20E, out.Slipe.Server.Vehicles.TrailerModel, getBaggageCovered },
+              { "BaggageUncovered", 0x20E, out.Slipe.Server.Vehicles.TrailerModel, getBaggageUncovered },
+              { "Farmtrailer", 0x20E, out.Slipe.Server.Vehicles.TrailerModel, getFarmtrailer },
+              { "GasSemi", 0x20E, out.Slipe.Server.Vehicles.TrailerModel, getGasSemi },
+              { "OpenSemi", 0x20E, out.Slipe.Server.Vehicles.TrailerModel, getOpenSemi },
+              { "Semi", 0x20E, out.Slipe.Server.Vehicles.TrailerModel, getSemi },
+              { "SmallSemi", 0x20E, out.Slipe.Server.Vehicles.TrailerModel, getSmallSemi },
+              { "Steps", 0x20E, out.Slipe.Server.Vehicles.TrailerModel, getSteps },
+              { "Streetcleaner", 0x20E, out.Slipe.Server.Vehicles.TrailerModel, getStreetcleaner }
+            },
+            class = { 0xE }
+          }
+        end
       }
     end)
     namespace.class("Trains", function (namespace)
@@ -887,7 +1213,20 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
         getFlatFreight = getFlatFreight,
         getBrownStreakEngine = getBrownStreakEngine,
         getBrownStreakCarriage = getBrownStreakCarriage,
-        getTrolly = getTrolly
+        getTrolly = getTrolly,
+        __metadata__ = function (out)
+          return {
+            properties = {
+              { "BoxFreight", 0x20E, out.Slipe.Server.Vehicles.TrainModel, getBoxFreight },
+              { "BrownStreakCarriage", 0x20E, out.Slipe.Server.Vehicles.TrainModel, getBrownStreakCarriage },
+              { "BrownStreakEngine", 0x20E, out.Slipe.Server.Vehicles.TrainModel, getBrownStreakEngine },
+              { "FlatFreight", 0x20E, out.Slipe.Server.Vehicles.TrainModel, getFlatFreight },
+              { "FreightEngine", 0x20E, out.Slipe.Server.Vehicles.TrainModel, getFreightEngine },
+              { "Trolly", 0x20E, out.Slipe.Server.Vehicles.TrainModel, getTrolly }
+            },
+            class = { 0xE }
+          }
+        end
       }
     end)
     namespace.class("TurretedVehicles", function (namespace)
@@ -904,7 +1243,17 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
       return {
         getRhino = getRhino,
         getSwat = getSwat,
-        getFiretruck = getFiretruck
+        getFiretruck = getFiretruck,
+        __metadata__ = function (out)
+          return {
+            properties = {
+              { "Firetruck", 0x20E, out.Slipe.Server.Vehicles.TurretedModel, getFiretruck },
+              { "Rhino", 0x20E, out.Slipe.Server.Vehicles.TurretedModel, getRhino },
+              { "Swat", 0x20E, out.Slipe.Server.Vehicles.TurretedModel, getSwat }
+            },
+            class = { 0xE }
+          }
+        end
       }
     end)
     namespace.class("Taxis", function (namespace)
@@ -917,7 +1266,16 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
       end
       return {
         getCabbie = getCabbie,
-        getTaxi = getTaxi
+        getTaxi = getTaxi,
+        __metadata__ = function (out)
+          return {
+            properties = {
+              { "Cabbie", 0x20E, out.Slipe.Server.Vehicles.TaxiModel, getCabbie },
+              { "Taxi", 0x20E, out.Slipe.Server.Vehicles.TaxiModel, getTaxi }
+            },
+            class = { 0xE }
+          }
+        end
       }
     end)
     __ctor__ = function (this, id)
@@ -976,7 +1334,21 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
       getVehicles = getVehicles,
       FromName = FromName,
       FromId = FromId,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Handling", 0x206, out.Slipe.Server.Vehicles.ModelHandling, getHandling },
+            { "Vehicles", 0x206, System.Array(out.Slipe.Server.Vehicles.BaseVehicle), getVehicles }
+          },
+          methods = {
+            { ".ctor", 0x103, nil, System.Int32 },
+            { "FromId", 0x18E, FromId, System.Int32, class },
+            { "FromName", 0x18E, FromName, System.String, class }
+          },
+          class = { 0x6 }
+        }
+      end
     }
     return class
   end)

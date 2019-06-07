@@ -26,6 +26,13 @@ System.namespace("Slipe.Server.Elements", function (namespace)
       __ctor__ = __ctor__,
       __metadata__ = function (out)
         return {
+          methods = {
+            { ".ctor", 0x106, nil, out.Slipe.MtaDefinitions.MtaElement },
+            { "HandleEvent", 0xA06, HandleEvent, System.String, out.Slipe.MtaDefinitions.MtaElement, System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, System.Object }
+          },
+          events = {
+            { "OnMiscelaniousEvent", 0xE, System.Delegate(System.String, out.Slipe.MtaDefinitions.MtaElement, System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, System.Object, System.Void) }
+          },
           class = { 0x6, System.new(out.Slipe.Shared.Elements.DefaultElementClassAttribute, 2, 36 --[[ElementType.Root]]) }
         }
       end

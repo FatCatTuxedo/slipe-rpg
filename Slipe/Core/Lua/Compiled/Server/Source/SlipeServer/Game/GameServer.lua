@@ -127,7 +127,47 @@ System.namespace("Slipe.Server.Game", function (namespace)
       setFpsLimit = setFpsLimit,
       SetGlitchEnabled = SetGlitchEnabled,
       IsGlitchEnabled = IsGlitchEnabled,
-      Shutdown = Shutdown
+      Shutdown = Shutdown,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Config", 0x20E, out.Slipe.Server.Game.Config, getConfig },
+            { "Console", 0x20E, out.Slipe.Server.IO.MtaConsole, getConsole },
+            { "Debug", 0x20E, out.Slipe.Server.IO.MtaDebug, getDebug },
+            { "FpsLimit", 0x10E, System.Int32, getFpsLimit, setFpsLimit },
+            { "FPSLimit", 0x10E, System.Int32, getFPSLimit, setFPSLimit },
+            { "HTTPPort", 0x20E, System.Int32, getHTTPPort },
+            { "IsVoiceEnabled", 0x20E, System.Boolean, getIsVoiceEnabled },
+            { "Log", 0x20E, out.Slipe.Server.IO.ServerLog, getLog },
+            { "MaxPlayers", 0x10E, System.Int32, getMaxPlayers, setMaxPlayers },
+            { "Name", 0x20E, System.String, getName },
+            { "Password", 0x10E, System.String, getPassword, setPassword },
+            { "Port", 0x20E, System.Int32, getPort },
+            { "TickCount", 0x20E, System.Int32, getTickCount },
+            { "Version", 0x20E, out.Slipe.Shared.Helpers.SystemVersion, getVersion }
+          },
+          fields = {
+            { "config", 0x9, out.Slipe.Server.Game.Config },
+            { "console", 0x9, out.Slipe.Server.IO.MtaConsole },
+            { "debug", 0x9, out.Slipe.Server.IO.MtaDebug },
+            { "log", 0x9, out.Slipe.Server.IO.ServerLog },
+            { "version", 0x9, out.Slipe.Shared.Helpers.SystemVersion }
+          },
+          methods = {
+            { "IsGlitchEnabled", 0x18E, IsGlitchEnabled, System.Int32, System.Boolean },
+            { "SetGlitchEnabled", 0x28E, SetGlitchEnabled, System.Int32, System.Boolean, System.Boolean },
+            { "Shutdown", 0x10E, Shutdown, System.String }
+          },
+          events = {
+            { "OnPreStart", 0xE, System.Delegate(out.Slipe.Server.Elements.ResourceRootElement, out.Slipe.Server.Game.Events.OnPreStartEventArgs, System.Void) },
+            { "OnStart", 0xE, System.Delegate(out.Slipe.Server.Elements.ResourceRootElement, out.Slipe.Server.Game.Events.OnStartEventArgs, System.Void) },
+            { "OnStop", 0xE, System.Delegate(out.Slipe.Server.Elements.ResourceRootElement, out.Slipe.Server.Game.Events.OnStopEventArgs, System.Void) },
+            { "OnPlayerConnect", 0xE, System.Delegate(out.Slipe.Server.Elements.RootElement, out.Slipe.Server.Game.Events.OnPlayerConnectEventArgs, System.Void) },
+            { "OnSettingChange", 0xE, System.Delegate(out.Slipe.Server.Elements.RootElement, out.Slipe.Server.Game.Events.OnSettingChangeEventArgs, System.Void) }
+          },
+          class = { 0xE }
+        }
+      end
     }
   end)
 end)

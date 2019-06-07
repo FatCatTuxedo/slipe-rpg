@@ -15,7 +15,19 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
     end
     return {
       IsDimensionMatching = false,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "IsDimensionMatching", 0x6, System.Boolean },
+            { "Marker", 0x6, out.Slipe.Server.Markers.Marker }
+          },
+          methods = {
+            { ".ctor", 0x204, nil, out.Slipe.MtaDefinitions.MtaElement, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

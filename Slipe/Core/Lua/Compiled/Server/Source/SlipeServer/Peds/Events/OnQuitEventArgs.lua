@@ -18,7 +18,20 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
     end
     return {
       QuitType = 0,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "QuitType", 0x6, System.Int32 },
+            { "Reason", 0x6, System.String },
+            { "ResponsiblePlayer", 0x6, out.Slipe.Server.Peds.Player }
+          },
+          methods = {
+            { ".ctor", 0x304, nil, System.Object, System.Object, out.Slipe.MtaDefinitions.MtaElement }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

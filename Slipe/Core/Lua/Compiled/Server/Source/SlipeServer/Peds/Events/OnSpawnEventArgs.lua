@@ -25,7 +25,23 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       Model = 0,
       Interior = 0,
       Dimension = 0,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Dimension", 0x6, System.Int32 },
+            { "Interior", 0x6, System.Int32 },
+            { "Model", 0x6, System.Int32 },
+            { "Position", 0x6, System.Numerics.Vector3 },
+            { "Rotation", 0x6, System.Single },
+            { "Team", 0x6, out.Slipe.Server.Game.Team }
+          },
+          methods = {
+            { ".ctor", 0x804, nil, System.Object, System.Object, System.Object, System.Object, out.Slipe.MtaDefinitions.MtaElement, System.Object, System.Object, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

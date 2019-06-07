@@ -13,7 +13,18 @@ System.namespace("Slipe.Shared.Exports", function (namespace)
           System.Attribute
         }
       end,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Name", 0x6, System.String }
+          },
+          methods = {
+            { ".ctor", 0x106, nil, System.String }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

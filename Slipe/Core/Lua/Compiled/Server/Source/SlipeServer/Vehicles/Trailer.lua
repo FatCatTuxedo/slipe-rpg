@@ -64,7 +64,25 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
         __ctor1__,
         __ctor2__,
         __ctor3__
-      }
+      },
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "TowingVehicle", 0x106, out.Slipe.Server.Vehicles.BaseVehicle, getTowingVehicle, setTowingVehicle }
+          },
+          methods = {
+            { ".ctor", 0x106, __ctor1__, out.Slipe.MtaDefinitions.MtaElement },
+            { ".ctor", 0x206, __ctor2__, out.Slipe.Server.Vehicles.TrailerModel, System.Numerics.Vector3 },
+            { ".ctor", 0x606, __ctor3__, out.Slipe.Server.Vehicles.TrailerModel, System.Numerics.Vector3, System.Numerics.Vector3, System.String, System.Int32, System.Int32 },
+            { "AttachTo", 0x186, AttachTo4, out.Slipe.Server.Vehicles.BaseVehicle, System.Boolean }
+          },
+          events = {
+            { "OnAttach", 0x6, System.Delegate(class, out.Slipe.Server.Vehicles.Events.OnAttachEventArgs, System.Void) },
+            { "OnDetach", 0x6, System.Delegate(class, out.Slipe.Server.Vehicles.Events.OnDetachEventArgs, System.Void) }
+          },
+          class = { 0x6 }
+        }
+      end
     }
     return class
   end)
@@ -83,7 +101,15 @@ System.namespace("Slipe.Server.Vehicles", function (namespace)
           out.Slipe.Server.Vehicles.VehicleModel
         }
       end,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          methods = {
+            { ".ctor", 0x104, nil, System.Int32 }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

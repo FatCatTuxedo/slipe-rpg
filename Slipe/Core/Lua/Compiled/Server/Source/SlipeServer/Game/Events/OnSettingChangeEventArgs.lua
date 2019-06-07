@@ -9,7 +9,20 @@ System.namespace("Slipe.Server.Game.Events", function (namespace)
       this.NewValue = System.cast(System.String, newValue)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "NewValue", 0x6, System.String },
+            { "OldValue", 0x6, System.String },
+            { "Setting", 0x6, System.String }
+          },
+          methods = {
+            { ".ctor", 0x304, nil, System.Object, System.Object, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

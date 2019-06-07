@@ -11,7 +11,18 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       this.Ban = System.new(SlipeServerAccounts.Ban, 2, ban)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Ban", 0x6, out.Slipe.Server.Accounts.Ban }
+          },
+          methods = {
+            { ".ctor", 0x104, nil, out.Slipe.MtaDefinitions.MtaBan }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

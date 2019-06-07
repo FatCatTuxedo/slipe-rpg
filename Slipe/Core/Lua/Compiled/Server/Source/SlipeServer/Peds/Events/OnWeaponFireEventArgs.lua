@@ -20,7 +20,21 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       this.StartPosition = SystemNumerics.Vector3(System.cast(System.Single, sx), System.cast(System.Single, sy), System.cast(System.Single, sz))
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "EndPosition", 0x6, System.Numerics.Vector3 },
+            { "HitElement", 0x6, out.Slipe.Shared.Elements.PhysicalElement },
+            { "StartPosition", 0x6, System.Numerics.Vector3 },
+            { "Weapon", 0x6, out.Slipe.Server.Weapons.WeaponModel }
+          },
+          methods = {
+            { ".ctor", 0x804, nil, System.Object, System.Object, System.Object, System.Object, out.Slipe.MtaDefinitions.MtaElement, System.Object, System.Object, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

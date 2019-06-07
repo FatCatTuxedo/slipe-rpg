@@ -10,7 +10,19 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
     return {
       Status = 0,
       Ticks = 0,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Status", 0x6, System.Int32 },
+            { "Ticks", 0x6, System.Int32 }
+          },
+          methods = {
+            { ".ctor", 0x204, nil, System.Object, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

@@ -11,7 +11,18 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       this.Target = SlipeSharedElements.ElementManager.getInstance():GetElement(target, SlipeSharedElements.PhysicalElement)
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Target", 0x6, out.Slipe.Shared.Elements.PhysicalElement }
+          },
+          methods = {
+            { ".ctor", 0x104, nil, out.Slipe.MtaDefinitions.MtaElement }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

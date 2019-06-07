@@ -8,7 +8,18 @@ System.namespace("Slipe.Server.Vehicles.Events", function (namespace)
     end
     return {
       Loss = 0,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "Loss", 0x6, System.Single }
+          },
+          methods = {
+            { ".ctor", 0x104, nil, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

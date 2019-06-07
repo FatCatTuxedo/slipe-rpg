@@ -12,7 +12,19 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       this.NewWeapon = System.new(SlipeServerWeapons.WeaponModel, 2, System.cast(System.Int32, newWeapon))
     end
     return {
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "NewWeapon", 0x6, out.Slipe.Server.Weapons.WeaponModel },
+            { "PreviousWeapon", 0x6, out.Slipe.Server.Weapons.WeaponModel }
+          },
+          methods = {
+            { ".ctor", 0x204, nil, System.Object, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)

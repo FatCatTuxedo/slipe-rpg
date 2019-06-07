@@ -19,7 +19,22 @@ System.namespace("Slipe.Server.Peds.Events", function (namespace)
       DamageType = 0,
       BodyPart = 0,
       IsStealthKill = false,
-      __ctor__ = __ctor__
+      __ctor__ = __ctor__,
+      __metadata__ = function (out)
+        return {
+          properties = {
+            { "BodyPart", 0x6, System.Int32 },
+            { "DamageType", 0x6, System.Int32 },
+            { "IsStealthKill", 0x6, System.Boolean },
+            { "Killer", 0x6, out.Slipe.Shared.Elements.PhysicalElement },
+            { "RemainingAmmo", 0x6, System.Int32 }
+          },
+          methods = {
+            { ".ctor", 0x504, nil, System.Object, out.Slipe.MtaDefinitions.MtaElement, System.Object, System.Object, System.Object }
+          },
+          class = { 0x6 }
+        }
+      end
     }
   end)
 end)
