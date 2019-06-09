@@ -31,9 +31,10 @@ namespace ServerSide
         }
         public Program()
         {
+            mPlayer.Init();
             Vehicle fastboi = new Vehicle(VehicleModel.Cars.Banshee, new Vector3(0, 15, 3));
             // Spawn a player in Blueberry
-            Player.OnJoin += (Player p, OnJoinEventArgs eventArgs) => p.Spawn(new Vector3(0, 0, 5), Slipe.Shared.Peds.PedModel.cj);
+            Player.OnJoin += (Player p, OnJoinEventArgs eventArgs) => ChatBox.WriteLine("Please login with /login", p, Color.Red);
             Commands.addCommands();
         }
     }
