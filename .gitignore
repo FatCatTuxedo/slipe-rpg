@@ -2,6 +2,7 @@ Dist/
 Slipe/Build/
 Build/
 InternalModules/
+Slipe/
 meta.xml
 
 *.exe
