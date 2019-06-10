@@ -4,6 +4,7 @@ using Slipe.Server.IO;
 using Slipe.Server.Peds;
 using Slipe.Server.Vehicles;
 using Slipe.Shared.Elements;
+using Slipe.Shared.Weapons;
 using Slipe.Shared.Utilities;
 using Slipe.MtaDefinitions;
 using System.Numerics;
@@ -38,12 +39,24 @@ namespace ServerSide
             OnLogin += (Player source, OnLoginEventArgs eventArgs) =>
             {
                 respawn();
+                loadPlayerData();
+            };
+
+            OnLogout += (Player source, OnLogoutEventArgs eventArgs) =>
+            {
+                MtaServer.KickPlayer(this.element, "Console", "you logged out");
             };
         }
-
+        public void loadPlayerData()
+        {
+            Money = 1234;
+            GiveWeapon(SharedWeaponModel.CombatShotgun, 100);
+            SetStat(PedStat.WeapontypeSpas12ShotgunSkill, 1000);
+        }
         public void respawn()
         {
             Spawn(new Vector3(0, 0, 5), PedModel.cj);
+            loadPlayerData();
             needsRespawn = false;
             respawnTimer = 0;
         }
