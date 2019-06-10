@@ -4,6 +4,8 @@ Build/
 InternalModules/
 meta.xml
 
+*.exe
+
 .vs/
 [Dd]ebug/
 [Dd]ebugPublic/
