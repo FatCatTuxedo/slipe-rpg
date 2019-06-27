@@ -20,6 +20,7 @@ namespace ServerSide
 {
     public static class mPlayer
     {
+        private static int autosave = 0;
         private static Timer userChecker;
         public static void Init()
         {
@@ -36,16 +37,27 @@ namespace ServerSide
         {
             try
             {
+                autosave++;
                 foreach (vPlayer player in ElementManager.Instance.GetByType<Player>())
                 {
 
-                    if (!player.Account.IsGuestAccount)
+                    if (!player.loggedin)
                     {
+
                         if (player.needsRespawn)
                         {
                             player.respawnTimer += 1;
                             if (player.respawnTimer > 4)
+                            {
                                 player.respawn();
+                                player.needsRespawn = false;
+                                player.respawnTimer = 0;
+                            }
+                        }
+                        if (autosave > 7200)
+                        {
+                            player.saveData();
+                            autosave = 0;
                         }
                     }
                 }

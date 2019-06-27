@@ -15,15 +15,6 @@ namespace ServerSide
 {
     class Program
     {
-        Database database = new Database(new MySqlConnectionString()
-        {
-            Hostname = "127.0.0.1",
-            Port = 3306,
-            DbName = "mta"
-        }, "root", "toor", new SqlOptions()
-        {
-            AutoReconnect = true
-        });
         static void Main(string[] args)
         {
             new Program();
@@ -31,11 +22,11 @@ namespace ServerSide
         }
         public Program()
         {
-            mPlayer.Init();
+        mPlayer.Init();
             Vehicle fastboi = new Vehicle(VehicleModel.Cars.Banshee, new Vector3(0, 15, 3));
-            // Spawn a player in Blueberry
-            Player.OnJoin += (Player p, OnJoinEventArgs eventArgs) => ChatBox.WriteLine("Please login with /login", p, Color.Red);
+
             Commands.addCommands();
         }
+
     }
 }

@@ -11,9 +11,14 @@ using System.Numerics;
 using Slipe.Server.Game;
 using Slipe.Shared.Peds;
 using Slipe.Shared.Rendering;
+using Slipe.Server.Accounts;
 using System.Timers;
 using System;
+using System.Data;
+using Slipe.Sql;
 using Slipe.Server.Peds.Events;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ServerSide
 {
@@ -22,8 +27,18 @@ namespace ServerSide
     {
         public bool needsRespawn = false;
         public int respawnTimer = 0;
+        public int skin;
+        public int BankBalance;
+        public int StaffLevel;
+        public bool loggedin;
+        public Dictionary<string, int> inventory = new Dictionary<string, int>();
         public vPlayer(MtaElement element) : base(element)
         {
+            OnJoin += (Player p, OnJoinEventArgs eventArgs) =>
+            {
+                loggedin = false;
+                ChatBox.WriteLine("Please login with /slogin", p, Color.Orange);
+            };
             OnSpawn += (Player source, OnSpawnEventArgs eventArgs) =>
             {
                 Camera.Target = this;
@@ -36,29 +51,38 @@ namespace ServerSide
                 respawnTimer = 0;
             };
 
-            OnLogin += (Player source, OnLoginEventArgs eventArgs) =>
+            OnQuit += (Player source, OnQuitEventArgs eventArgs) =>
             {
-                respawn();
-                loadPlayerData();
+                saveData();
             };
 
-            OnLogout += (Player source, OnLogoutEventArgs eventArgs) =>
-            {
-                MtaServer.KickPlayer(this.element, "Console", "you logged out");
-            };
         }
-        public void loadPlayerData()
+        public void saveData()
         {
-            Money = 1234;
-            GiveWeapon(SharedWeaponModel.CombatShotgun, 100);
-            SetStat(PedStat.WeapontypeSpas12ShotgunSkill, 1000);
+
+        }
+        public void loadPlayerData(int money, int sskin, int bank, int staff)
+        {
+            //set element data here for re-logging in after resource restart
+            loggedin = true;
+            skin = sskin;
+            respawn();
+            Money = money;
+            BankBalance = bank;
+            StaffLevel = staff;
+            
         }
         public void respawn()
         {
-            Spawn(new Vector3(0, 0, 5), PedModel.cj);
-            loadPlayerData();
+            Spawn(new Vector3(0, 0, 5), (PedModel)skin);
+            //load player weapons here
             needsRespawn = false;
             respawnTimer = 0;
+        }
+        public void suicide()
+        {
+            ChatBox.WriteLine("Goodbye cruel world.", this, Color.Red);
+            Kill(this, Slipe.Shared.Weapons.SharedWeaponModel.Bomb, BodyPart.Head);
         }
 
     }
