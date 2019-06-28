@@ -1,5 +1,6 @@
 ﻿using Slipe.Client.Elements;
 using Slipe.Client.IO;
+using Slipe.Client.Gui;
 using Slipe.Shared.Elements;
 
 namespace ClientSide
@@ -13,7 +14,7 @@ namespace ClientSide
 
         public Program()
         {
-            ChatBox.WriteLine("Hello world", 0xffff00);
+            
         }
     }
 }

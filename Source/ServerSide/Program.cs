@@ -9,6 +9,7 @@ using Slipe.Server.Vehicles;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
 using Slipe.Sql;
+using System;
 using System.Numerics;
 
 namespace ServerSide
@@ -24,7 +25,6 @@ namespace ServerSide
         {
         mPlayer.Init();
             Vehicle fastboi = new Vehicle(VehicleModel.Cars.Banshee, new Vector3(0, 15, 3));
-
             Commands.addCommands();
         }
 

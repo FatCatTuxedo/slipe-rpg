@@ -37,11 +37,10 @@ namespace ServerSide
         {
             try
             {
-                autosave++;
                 foreach (vPlayer player in ElementManager.Instance.GetByType<Player>())
                 {
 
-                    if (!player.loggedin)
+                    if (player.loggedin)
                     {
 
                         if (player.needsRespawn)
@@ -49,15 +48,21 @@ namespace ServerSide
                             player.respawnTimer += 1;
                             if (player.respawnTimer > 4)
                             {
-                                player.respawn();
+                                player.respawnHosp();
                                 player.needsRespawn = false;
                                 player.respawnTimer = 0;
                             }
                         }
-                        if (autosave > 7200)
+                        if (player.suicide)
                         {
-                            player.saveData();
-                            autosave = 0;
+                            player.suicideTimer += 1;
+                            player.Frozen = true;
+                            if (player.suicideTimer > 4)
+                            {
+                                player.doSuicide();
+                                player.suicide = false;
+                                player.suicideTimer = 0;
+                            }
                         }
                     }
                 }

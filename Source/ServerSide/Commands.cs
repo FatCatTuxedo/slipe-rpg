@@ -15,6 +15,7 @@ using System.Timers;
 using System;
 using Slipe.Server.Peds.Events;
 using System.Threading.Tasks;
+using Slipe.Shared.Exceptions;
 
 namespace ServerSide
 {
@@ -26,6 +27,7 @@ namespace ServerSide
             new CommandHandler("slogin", HandleCommand);
             new CommandHandler("sregister", HandleCommand);
             new CommandHandler("balance", HandleCommand);
+            new CommandHandler("setskin", HandleCommand);
         }
         public static void HandleCommand(Player player, string command, string[] arguments)
         {
@@ -33,7 +35,20 @@ namespace ServerSide
             switch (command)
             {
                 case "kill":
-                    p.suicide();
+                    if (p.suicide)
+                    {
+                        ChatBox.WriteLine("You cancelled your suicide.", player, Color.GreenYellow);
+                        p.suicide = false;
+                        p.suicideTimer = 0;
+                        p.Frozen = false;
+                    }
+                    else if (Checking.playerOkToSuicide(p))
+                    {
+                        //add a check for already frozen
+                        ChatBox.WriteLine("You will be killed in 5 seconds use /kill again to cancel.", player, Color.AquaMarine);
+                        p.suicide = true;
+                        p.suicideTimer = 0;
+                    }
                     break;
                 case "slogin":
                     _ = dbManager.AttemptLogin(player, arguments[0], arguments[1]);
@@ -44,6 +59,31 @@ namespace ServerSide
                 case "balance":
                     ChatBox.WriteLine("Your Bank Balance is: $" + p.BankBalance, player, Color.GreenYellow);
                     break;
+                case "setskin":
+                    string[] syntax = { "player", "skinID" };
+                    if (Checking.hasStaffPermission(1, p, "/setskin"))
+                    {
+                        try {
+                           vPlayer target = (vPlayer)Player.GetFromName(arguments[0]);
+                            int skin;
+                            bool success = Int32.TryParse(arguments[1], out skin);
+                            if (success)
+                            {
+                                if (Checking.isValidSkin(skin))
+                                {
+                                    target.skin = skin;
+                                    target.Model = skin;
+                                }
+                                else
+                                    Checking.processCommandError(p, command, syntax, "Invalid Skin");
+                            }
+                            else
+                                Checking.processCommandError(p, command, syntax, "Invalid Skin");
+                        }
+                        catch(ArgumentOutOfRangeException) { Checking.processCommandError(p, "setskin", Checking.noSyntax, "Incorrect syntax."); }
+                        catch(NullElementException e) { Checking.processCommandError(p, "setskin", Checking.noSyntax, e.Message); }
+                    }
+                break;
             }
         }
     }
