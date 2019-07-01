@@ -72,7 +72,7 @@ namespace ServerSide
                 ChatBox.WriteLine("SYNTAX: /" + cmdname, p, Color.Orange);
             }
             else
-                ChatBox.WriteLine("SYNTAX: /" + cmdname + " " + string.Join(" ", cmdargs) ?? " ", p, Color.Orange);
+                ChatBox.WriteLine("SYNTAX: /" + cmdname + " " + string.Join(" ", cmdargs), p, Color.Orange);
         }
     }
 }
