@@ -1,4 +1,4 @@
-# Slipe-Core (Alpha)
+# Xoa Slipe RPG
 
 Slipe-Core is a framework that enables anyone to write scripts for [MTA:San Andreas](https://multitheftauto.com) in C# instead of Lua, wrapping all MTA elements and classes and including some .NET Core namespaces. It is based on [CSharp.lua](https://github.com/yanghuan/CSharp.lua) by [Yang Huan](https://github.com/yanghuan).
 
