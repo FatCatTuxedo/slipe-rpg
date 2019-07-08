@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Server.Game;
+﻿using Slipe.Server.Game;
 using Slipe.Shared.Utilities;
 
 namespace ServerSide

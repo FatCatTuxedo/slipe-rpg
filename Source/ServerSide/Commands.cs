@@ -1,20 +1,7 @@
-﻿using Slipe.Server;
-using Slipe.Server.Elements;
-using Slipe.Server.IO;
+﻿using Slipe.Server.IO;
 using Slipe.Server.Peds;
-using Slipe.Server.Vehicles;
-using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
-using Slipe.Server.Accounts;
-using Slipe.MtaDefinitions;
-using System.Numerics;
-using Slipe.Server.Game;
-using Slipe.Shared.Peds;
-using Slipe.Shared.Rendering;
-using System.Timers;
 using System;
-using Slipe.Server.Peds.Events;
-using System.Threading.Tasks;
 using Slipe.Shared.Exceptions;
 
 namespace ServerSide

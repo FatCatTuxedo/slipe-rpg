@@ -1,15 +1,4 @@
-﻿
-using Slipe.Server;
-using Slipe.Server.Elements;
-using Slipe.Server.Game;
-using Slipe.Server.IO;
-using Slipe.Server.Peds;
-using Slipe.Server.Peds.Events;
-using Slipe.Server.Vehicles;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Utilities;
-using Slipe.Sql;
-using System;
+﻿using Slipe.Server.Vehicles;
 using System.Numerics;
 
 namespace ServerSide
