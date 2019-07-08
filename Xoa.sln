@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerSide", "Source\Server
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientSide", "Source\ClientSide\ClientSide.csproj", "{ABE9713E-8B2B-48F4-9156-820A0BDC3285}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resource", "Resource", "{3BAE3D07-C859-4665-B92B-786ECB449FE8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xoa", "Xoa", "{3BAE3D07-C859-4665-B92B-786ECB449FE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
