@@ -15,6 +15,7 @@ namespace ServerSide
             new CommandHandler("sregister", HandleCommand);
             new CommandHandler("balance", HandleCommand);
             new CommandHandler("setskin", HandleCommand);
+            new CommandHandler("staff", HandleCommand);
         }
         public static void HandleCommand(Player player, string command, string[] arguments)
         {
@@ -46,6 +47,14 @@ namespace ServerSide
                 case "balance":
                     ChatBox.WriteLine("Your Bank Balance is: $" + p.BankBalance, player, Color.GreenYellow);
                     break;
+                case "staff":
+                    // I will make jobs later
+                    if (Checking.hasStaffPermission(1, p, "/staff"))
+                    {
+                            player.Team = mTeam.Staff;
+                            player.NametagColor = player.Team.Color;
+                    }
+                        break;
                 case "setskin":
                     string[] syntax = { "player", "skinID" };
                     if (Checking.hasStaffPermission(1, p, "/setskin"))

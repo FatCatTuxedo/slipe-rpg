@@ -55,5 +55,14 @@ namespace ServerSide
                 ChatBox.WriteLine("That username has been taken.", player, Slipe.Shared.Utilities.Color.Red);
             }
         }
+
+        public static async Task getJobs()
+        {
+            var results = await database.Query("SELECT * FROM jobs");
+            foreach (var row in results)
+            {
+                mJob.Jobs.Add(row["id"], new vJob(row["id"], row["title"], row["type"], row["r"], row["g"], row["b"], row["team"]));
+            }
+        }
     }
 }

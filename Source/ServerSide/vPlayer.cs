@@ -24,6 +24,7 @@ namespace ServerSide
         public bool combatTag = false;
         public bool suicide = false;
         public int suicideTimer = 0;
+        public vJob Job;
         public Dictionary<string, int> inventory = new Dictionary<string, int>();
         public vPlayer(MtaElement element) : base(element)
         {
@@ -91,6 +92,13 @@ namespace ServerSide
             Kill(this, Slipe.Shared.Weapons.SharedWeaponModel.Bomb, BodyPart.Head);
             suicide = false;
             suicideTimer = 0;
+        }
+
+        public void setJob(vJob job)
+        {
+            this.Job = job;
+            this.NametagColor = Job.Color;
+            this.Team = Job.Team;
         }
 
     }

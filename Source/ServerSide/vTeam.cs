@@ -1,15 +1,16 @@
 ﻿using Slipe.Shared.Elements;
 using Slipe.Server.Game;
 using Slipe.MtaDefinitions;
+using Slipe.Shared.Utilities;
 
 namespace ServerSide
 {
-    [DefaultElementClass(ElementType.Team)]
     public class vTeam : Team
     {
-        public vTeam(MtaElement element) : base(element)
+        public vTeam(string name, Color color) : base(name, color)
         {
-
+            this.Name = name;
+            this.Color = color;
         }
     }
 }
