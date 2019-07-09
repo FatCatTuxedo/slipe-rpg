@@ -100,7 +100,8 @@ namespace ServerSide
             this.Job = mJob.Jobs[job];
             this.NametagColor = Job.Color;
             this.Team = Job.Team;
-            
+            Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", this.element, "job", "", 0, 0, 0);
+            Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", this.element, "job", Job.Title, Job.Color.R, Job.Color.G, Job.Color.B);
         }
         public void quitJob()
         {
@@ -110,5 +111,21 @@ namespace ServerSide
             this.Model = skin;
         }
 
+        public void editMoney(int amount)
+        {
+            if (amount < 0)
+            {
+                TakeMoney(System.Math.Abs(amount));
+                Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", null);
+                Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", this.element, "money", "-$" + System.Math.Abs(amount), 255, 0, 0);
+            }
+            else
+            {
+                GiveMoney(amount);
+                Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", this.element, "money", "", 0, 0, 0);
+                Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", this.element, "money", "$" + amount, 0, 255, 0);
+            }
+
+        }
     }
 }
