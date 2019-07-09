@@ -16,6 +16,9 @@ namespace ServerSide
             new CommandHandler("balance", HandleCommand);
             new CommandHandler("setskin", HandleCommand);
             new CommandHandler("staff", HandleCommand);
+            new CommandHandler("quitjob", HandleCommand);
+            new CommandHandler("criminal", HandleCommand);
+            new CommandHandler("gangster", HandleCommand);
         }
         public static void HandleCommand(Player player, string command, string[] arguments)
         {
@@ -48,19 +51,35 @@ namespace ServerSide
                     ChatBox.WriteLine("Your Bank Balance is: $" + p.BankBalance, player, Color.GreenYellow);
                     break;
                 case "staff":
-                    // I will make jobs later
-                    if (Checking.hasStaffPermission(1, p, "/staff"))
+                    if (Checking.hasStaffPermission(0.1f, p, "/staff"))
                     {
-                            player.Team = mTeam.Staff;
-                            player.NametagColor = player.Team.Color;
+                        if (p.StaffLevel < 1)
+                        {
+                            p.setJob("Helper");
+                        }
+                        else
+                        {
+                            p.setJob("L" + p.StaffLevel + " Staff");
+                            p.Model = 217;
+                        }
                     }
-                        break;
+                    break;
+                case "quitjob":
+                    p.quitJob();
+                    break;
+                case "criminal":
+                    p.setJob("Criminal");
+                    break;
+                case "gangster":
+                    p.setJob("Gangster");
+                    break;
                 case "setskin":
                     string[] syntax = { "player", "skinID" };
                     if (Checking.hasStaffPermission(1, p, "/setskin"))
                     {
-                        try {
-                           vPlayer target = (vPlayer)Player.GetFromName(arguments[0]);
+                        try
+                        {
+                            vPlayer target = (vPlayer)Player.GetFromName(arguments[0]);
                             int skin;
                             bool success = Int32.TryParse(arguments[1], out skin);
                             if (success)
@@ -76,10 +95,10 @@ namespace ServerSide
                             else
                                 Checking.processCommandError(p, command, syntax, "Invalid Skin");
                         }
-                        catch(ArgumentOutOfRangeException) { Checking.processCommandError(p, "setskin", Checking.noSyntax, "Incorrect syntax."); }
-                        catch(NullElementException e) { Checking.processCommandError(p, "setskin", Checking.noSyntax, e.Message); }
+                        catch (ArgumentOutOfRangeException) { Checking.processCommandError(p, "setskin", Checking.noSyntax, "Incorrect syntax."); }
+                        catch (NullElementException e) { Checking.processCommandError(p, "setskin", Checking.noSyntax, e.Message); }
                     }
-                break;
+                    break;
             }
         }
     }

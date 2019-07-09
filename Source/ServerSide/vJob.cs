@@ -18,12 +18,13 @@ namespace ServerSide
             this.ID = id;
             this.Title = title;
             this.Type = (mJob.jobType)type;
-            this.Team = mTeam.getTeamByName(team);
-            Color color = new Color((byte)r, (byte)g, (byte)b);
-            if (color == Color.Black)
-            {
-                Color = Team.Color;
-            }
+            this.Team = mTeam.Teams[team];
+            if (r == 0 && g == 0 && b == 0)
+                this.Color = Team.Color;
+            else
+                Color = new Color((byte)r, (byte)g, (byte)b);
+                
+
         }
     }
 }

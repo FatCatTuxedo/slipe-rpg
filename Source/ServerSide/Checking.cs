@@ -18,7 +18,7 @@ namespace ServerSide
             return false;
         }
 
-        public static bool hasStaffPermission(int required_lvl, vPlayer p, string action)
+        public static bool hasStaffPermission(float required_lvl, vPlayer p, string action)
         {
             if (p.StaffLevel >= required_lvl)
                 return true;

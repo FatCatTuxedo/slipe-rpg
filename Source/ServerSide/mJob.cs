@@ -6,20 +6,21 @@ namespace ServerSide
 {
     public static class mJob
     {
-        public static Dictionary<int, vJob> Jobs;
+        public static Dictionary<string, vJob> Jobs;
         public enum jobType
         {
             Staff = 1,
             Police = 2,
             Criminal = 3,
             Gangster = 4,
-            Pilot = 5,
-            Trucker = 6
+            CivNoFunction = 5,
+            Pilot = 6,
+            Trucker = 7
         };
 
         public static void loadJobs()
         {
-            Jobs = new Dictionary<int, vJob>();
+            Jobs = new Dictionary<string, vJob>();
             _ = dbManager.getJobs();
         }
     }

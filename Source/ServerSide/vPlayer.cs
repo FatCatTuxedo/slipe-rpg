@@ -19,7 +19,7 @@ namespace ServerSide
         public int respawnTimer = 0;
         public int skin;
         public int BankBalance;
-        public int StaffLevel;
+        public float StaffLevel;
         public bool loggedin;
         public bool combatTag = false;
         public bool suicide = false;
@@ -62,7 +62,7 @@ namespace ServerSide
         {
             dbManager.database.Exec("UPDATE users SET (skin, money, bank, staff_level, x, y, z, rot, dim, int) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?", skin, Money, BankBalance, StaffLevel, Position.X, Position.Y, Position.Z, Rotation, Dimension, Interior, accountID);
         }
-        public void loadPlayerData(int money, int sskin, int bank, int staff, int dim, int i, float x, float y, float z, int rot)
+        public void loadPlayerData(int money, int sskin, int bank, float staff, int dim, int i, float x, float y, float z, int rot)
         {
             //set element data here for re-logging in after resource restart
             loggedin = true;
@@ -94,11 +94,20 @@ namespace ServerSide
             suicideTimer = 0;
         }
 
-        public void setJob(vJob job)
+        public void setJob(string job)
         {
-            this.Job = job;
+            
+            this.Job = mJob.Jobs[job];
             this.NametagColor = Job.Color;
             this.Team = Job.Team;
+            
+        }
+        public void quitJob()
+        {
+            this.Job = mJob.Jobs["Unemployed"];
+            this.NametagColor = Job.Color;
+            this.Team = Job.Team;
+            this.Model = skin;
         }
 
     }
