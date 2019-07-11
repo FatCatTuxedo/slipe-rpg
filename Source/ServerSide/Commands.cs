@@ -19,7 +19,7 @@ namespace ServerSide
             new CommandHandler("quitjob", HandleCommand);
             new CommandHandler("criminal", HandleCommand);
             new CommandHandler("gangster", HandleCommand);
-            new CommandHandler("editmoney", HandleCommand);
+            new CommandHandler("forcesave", HandleCommand);
         }
         public static void HandleCommand(Player player, string command, string[] arguments)
         {
@@ -53,6 +53,9 @@ namespace ServerSide
                     break;
                 case "editmoney":
                     p.editMoney(-100);
+                    break;
+                case "forcesave":
+                        p.saveData();
                     break;
                 case "staff":
                     if (Checking.hasStaffPermission(0.1f, p, "/staff"))
