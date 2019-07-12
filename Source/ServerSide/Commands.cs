@@ -3,6 +3,7 @@ using Slipe.Server.Peds;
 using Slipe.Shared.Utilities;
 using System;
 using Slipe.Shared.Exceptions;
+using Slipe.Server.Vehicles;
 
 namespace ServerSide
 {
@@ -19,7 +20,7 @@ namespace ServerSide
             new CommandHandler("quitjob", HandleCommand);
             new CommandHandler("criminal", HandleCommand);
             new CommandHandler("gangster", HandleCommand);
-            new CommandHandler("forcesave", HandleCommand);
+            new CommandHandler("staffveh", HandleCommand);
         }
         public static void HandleCommand(Player player, string command, string[] arguments)
         {
@@ -54,8 +55,18 @@ namespace ServerSide
                 case "editmoney":
                     p.editMoney(-100);
                     break;
-                case "forcesave":
-                        p.saveData();
+                case "staffveh":
+                    if (Checking.hasStaffPermission(1, p, "/" + command))
+                    {
+                        //var model = VehicleModel.FromId(Convert.ToInt32(arguments[0]));
+                        //if (model.GetType() == typeof(VehicleModel))
+                        //{
+
+
+                            StaffDutyVeh test = new StaffDutyVeh(VehicleModel.Cars.Sultan, p.Position);
+                            p.WarpIntoVehicle(test);
+                        //}
+                    }
                     break;
                 case "staff":
                     if (Checking.hasStaffPermission(0.1f, p, "/staff"))

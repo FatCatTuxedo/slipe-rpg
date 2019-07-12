@@ -7,7 +7,7 @@ using System.Numerics;
 
 namespace ServerSide
 {
-    public class HandlingManager
+    public static class HandlingManager
     {
         public static Dictionary<int, CustomHandling> HandlingList;
 
@@ -49,8 +49,8 @@ namespace ServerSide
     }
     public class CustomHandling : Handling
     {
-        public static int id;
-        public static int vehicle;
+        public int id;
+        public int vehicle;
         public CustomHandling(int i, int veh, float mass, float turnmass, float dragCoeff, float x, float y, float z, int persub,
             float tmult, float tloss, float tbias, int gears, float maxvel, float enga, float engi, string dType,
             string etype, float breakd, float breakbias, float steerlock, float sfl, float sd, float shsd, float sul,
@@ -61,7 +61,7 @@ namespace ServerSide
             this.Mass = mass;
             this.TurnMass = turnmass;
             this.DragCoefficient = dragCoeff;
-            //this.CenterOfMass = new Vector3(0, 0, 0);
+            this.CenterOfMass = new Vector3(x, y, z);
             this.PercentSubmerged = persub;
             this.TractionMultiplier = tmult;
             this.TractionLoss = tloss;
@@ -70,8 +70,8 @@ namespace ServerSide
             this.MaxVelocity = maxvel;
             this.EngineAcceleration = enga;
             this.EngineInertia = engi;
-            //this.DriveType = (DriveType)Enum.Parse(typeof(DriveType), dType);
-            //this.EngineType = (EngineType)Enum.Parse(typeof(EngineType), etype);
+            this.DriveType = (DriveType)Enum.Parse(typeof(DriveType), dType);
+            this.EngineType = (EngineType)Enum.Parse(typeof(EngineType), etype);
             this.BrakeDeceleration = breakd;
             this.BrakeBias = breakbias;
             this.SteeringLock = steerlock;

@@ -86,10 +86,9 @@ namespace ServerSide
             {
 
                 
-                try {
+                
                 HandlingManager.HandlingList.Add(row["id"], new CustomHandling(row["id"], row["vehicle"], row["mass"], row["turnmass"], row["dragCoeff"], row["CentMassX"], row["CentMassY"], row["CentMassZ"], row["persub"], row["tmult"], row["tloss"], row["tbias"], row["gears"], row["maxvel"], row["enga"], row["engi"], row["dtype"], row["etype"], row["breakd"], row["breakbias"], row["steerlock"], row["sfl"], row["sd"], row["shsd"], row["sul"], row["sll"], row["sfrb"], row["sadm"], row["sosd"], row["cdm"]));
-                }
-                catch { ChatBox.WriteLine("error with handling list", Slipe.Shared.Utilities.Color.Red); }
+                
                 
             }
         }

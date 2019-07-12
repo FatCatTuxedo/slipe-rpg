@@ -19,20 +19,14 @@ namespace ServerSide
         }
         public Program()
         {
+            //HandlingManager.loadHandling();
             mPlayer.Init();
             Commands.addCommands();
             mTeam.loadTeams();
             mJob.loadJobs();
-            HandlingManager.loadHandling();
+            
             HandleRestart();
-            Vehicle fastboi = new Vehicle(VehicleModel.Cars.Buffalo, new Vector3(0, 15, 3));
-            try {
-            HandlingManager.setHandling(fastboi, HandlingManager.HandlingList[1]);
-            }
-            catch(KeyNotFoundException e)
-            {
-                ChatBox.WriteLine(e.Message, Color.Red);
-            }
+            
         }
 
         private void HandleRestart()
