@@ -20,7 +20,6 @@ namespace ServerSide
             new CommandHandler("quitjob", HandleCommand);
             new CommandHandler("criminal", HandleCommand);
             new CommandHandler("gangster", HandleCommand);
-            new CommandHandler("staffveh", HandleCommand);
         }
         public static void HandleCommand(Player player, string command, string[] arguments)
         {
@@ -77,9 +76,10 @@ namespace ServerSide
                 case "staff":
                     if (Checking.hasStaffPermission(0.1f, p, "/staff"))
                     {
-                        if (p.StaffLevel < 1)
+                        if (p.StaffLevel < 1 && p.StaffLevel > 0)
                         {
                             p.setJob("Helper");
+                            p.Model = 217;
                         }
                         else
                         {
