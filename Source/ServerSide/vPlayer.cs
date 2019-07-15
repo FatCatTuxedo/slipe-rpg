@@ -128,5 +128,36 @@ namespace ServerSide
             }
 
         }
+
+        public void editBankMoney(int amount)
+        {
+            BankBalance += amount;
+        }
+
+        public void withdrawBankMoney(int amount)
+        {
+            if (this.BankBalance >= amount)
+            {
+                editBankMoney(-amount);
+                editMoney(amount);
+            }
+            else
+            {
+                //not enough money in bank
+            }
+        }
+
+        public void depositMoney(int amount)
+        {
+            if (this.Money >= amount)
+            {
+                editMoney(-amount);
+                editBankMoney(amount);
+            }
+            else
+            {
+                //cant deposit money u dont have
+            }
+        }
     }
 }
