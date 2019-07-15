@@ -42,13 +42,13 @@ namespace ServerSide
                     }
                     else
                     {
-                        Slipe.MtaDefinitions.MtaServer.KickPlayer(player.MTAElement, "Xoa", "Resource restarted but you were not logged in.");
+                        Slipe.MtaDefinitions.MtaServer.KickPlayer(player.MTAElement, "Xoa", "System restarted but you were not logged in.");
 
                     }
                 }
                 catch
                 {
-                    Slipe.MtaDefinitions.MtaServer.KickPlayer(player.MTAElement, "Xoa", "Resource restarted but you were not logged in.");
+                    Slipe.MtaDefinitions.MtaServer.KickPlayer(player.MTAElement, "Xoa", "System restarted but you were not logged in.");
                 }
             }
 
