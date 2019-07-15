@@ -24,8 +24,9 @@ namespace ServerSide
         public bool combatTag = false;
         public bool suicide = false;
         public int suicideTimer = 0;
+        public Dictionary<string, PlayerItem> Inventory;
         public vJob Job;
-        public Dictionary<string, int> inventory = new Dictionary<string, int>();
+        public Dictionary<string, PlayerItem> inventory = new Dictionary<string, PlayerItem>();
         public vPlayer(MtaElement element) : base(element)
         {
             OnJoin += (Player p, OnJoinEventArgs eventArgs) =>
@@ -73,7 +74,9 @@ namespace ServerSide
             BankBalance = bank;
             StaffLevel = staff;
             setJob(job);
-            
+            _ = dbManager.getPlayerItems(this);
+
+
         }
         public void respawn(int dim, int i, float x, float y, float z, int rot)
         {

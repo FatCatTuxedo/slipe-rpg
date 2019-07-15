@@ -78,6 +78,14 @@ namespace ServerSide
                 mJob.Jobs.Add(row["title"], new vJob(row["id"], row["title"], row["type"], row["r"], row["g"], row["b"], row["team"], row["skins"]));
             }
         }
+        public static async Task getPlayerItems(vPlayer player)
+        {
+            var results = await database.Query("SELECT * FROM users_items WHERE owner = ?", player.accountID);
+            foreach (var row in results)
+            {
+                player.Inventory.Add(row["name"], new PlayerItem(row["name"], row["amount"], row["owner"]));
+            }
+        }
 
         public static async Task getHandling()
         {
