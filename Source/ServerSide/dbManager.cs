@@ -33,7 +33,7 @@ namespace ServerSide
             if (correct)
             {
                 p.accountID = id;
-                p.loadPlayerData(results[0]["money"], results[0]["skin"], results[0]["bank"], results[0]["staff_level"], results[0]["dim"], results[0]["int"], results[0]["x"], results[0]["y"], results[0]["z"], results[0]["rot"]);
+                p.loadPlayerData(results[0]["money"], results[0]["skin"], results[0]["bank"], results[0]["staff_level"], results[0]["dim"], results[0]["int"], results[0]["x"], results[0]["y"], results[0]["z"], results[0]["rot"], results[0]["job"]);
                 ChatBox.WriteLine("Welcome " + user, player, Slipe.Shared.Utilities.Color.Green);
             }
             else
@@ -49,8 +49,8 @@ namespace ServerSide
             var results = await database.Query("SELECT * FROM users WHERE id = '" + id + "'");
             id = results[0]["id"];
                 p.accountID = id;
-                p.loadPlayerData(results[0]["money"], results[0]["skin"], results[0]["bank"], results[0]["staff_level"], results[0]["dim"], results[0]["int"], results[0]["x"], results[0]["y"], results[0]["z"], results[0]["rot"]);
-                ChatBox.WriteLine("Welcome " + (string)results[0]["username"], player, Slipe.Shared.Utilities.Color.Green);
+                p.loadPlayerData(results[0]["money"], results[0]["skin"], results[0]["bank"], results[0]["staff_level"], results[0]["dim"], results[0]["int"], results[0]["x"], results[0]["y"], results[0]["z"], results[0]["rot"], results[0]["job"]); 
+            ChatBox.WriteLine("Welcome " + (string)results[0]["username"], player, Slipe.Shared.Utilities.Color.Green);
             
 
         }

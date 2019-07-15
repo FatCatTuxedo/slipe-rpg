@@ -62,7 +62,7 @@ namespace ServerSide
         {
             dbManager.database.Exec("UPDATE users SET (skin, money, bank, staff_level, x, y, z, rot, dim, int, job) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?", skin, Money, BankBalance, StaffLevel, Position.X, Position.Y, Position.Z, Rotation, Dimension, Interior, Job.Title, accountID);
         }
-        public void loadPlayerData(int money, int sskin, int bank, float staff, int dim, int i, float x, float y, float z, int rot)
+        public void loadPlayerData(int money, int sskin, int bank, float staff, int dim, int i, float x, float y, float z, int rot, string job)
         {
             //set element data here for re-logging in after resource restart
             loggedin = true;
@@ -72,6 +72,7 @@ namespace ServerSide
             Money = money;
             BankBalance = bank;
             StaffLevel = staff;
+            setJob(job);
             
         }
         public void respawn(int dim, int i, float x, float y, float z, int rot)
