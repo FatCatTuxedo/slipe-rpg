@@ -75,7 +75,7 @@ namespace ServerSide
             var results = await database.Query("SELECT * FROM jobs");
             foreach (var row in results)
             {
-                mJob.Jobs.Add(row["title"], new vJob(row["id"], row["title"], row["type"], row["r"], row["g"], row["b"], row["team"]));
+                mJob.Jobs.Add(row["title"], new vJob(row["id"], row["title"], row["type"], row["r"], row["g"], row["b"], row["team"], row["skins"]));
             }
         }
 
