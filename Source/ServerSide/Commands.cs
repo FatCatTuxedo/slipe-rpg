@@ -27,6 +27,7 @@ namespace ServerSide
             vPlayer p = (vPlayer)player;
             switch (command)
             {
+                #region General Gameplay Commands
                 case "kill":
                     if (p.suicide)
                     {
@@ -43,31 +44,36 @@ namespace ServerSide
                         p.suicideTimer = 0;
                     }
                     break;
+                #endregion
+
+                #region Login Commands (will be removed once GUI is done)
                 case "slogin":
                     _ = dbManager.AttemptLogin(player, arguments[0], arguments[1]);
                     break;
                 case "sregister":
                     _ = dbManager.Register(player, arguments[0], arguments[1]);
                     break;
+                #endregion
+
+                #region Money related commands
                 case "balance":
                     ChatBox.WriteLine("Your Bank Balance is: $" + p.BankBalance, player, Color.GreenYellow);
                     break;
-                case "editmoney":
-                    p.editMoney(-100);
-                    break;
-                case "staffveh":
-                    if (Checking.hasStaffPermission(1, p, "/" + command))
-                    {
-                        //var model = VehicleModel.FromId(Convert.ToInt32(arguments[0]));
-                        //if (model.GetType() == typeof(VehicleModel))
-                        //{
+                #endregion
 
-
-                            StaffDutyVeh test = new StaffDutyVeh(VehicleModel.Cars.Sultan, p.Position);
-                            p.WarpIntoVehicle(test);
-                        //}
-                    }
+                #region Job related commands
+                case "quitjob":
+                    p.quitJob();
                     break;
+                case "criminal":
+                    p.setJob("Criminal");
+                    break;
+                case "gangster":
+                    p.setJob("Gangster");
+                    break;
+                #endregion
+
+                #region Staff Commands
                 case "staff":
                     if (Checking.hasStaffPermission(0.1f, p, "/staff"))
                     {
@@ -81,15 +87,6 @@ namespace ServerSide
                             p.Model = 217;
                         }
                     }
-                    break;
-                case "quitjob":
-                    p.quitJob();
-                    break;
-                case "criminal":
-                    p.setJob("Criminal");
-                    break;
-                case "gangster":
-                    p.setJob("Gangster");
                     break;
                 case "setskin":
                     string[] syntax = { "player", "skinID" };
@@ -117,6 +114,7 @@ namespace ServerSide
                         catch (NullElementException e) { Checking.processCommandError(p, "setskin", Checking.noSyntax, e.Message); }
                     }
                     break;
+                    #endregion
             }
         }
     }
