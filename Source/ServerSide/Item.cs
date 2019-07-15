@@ -3,6 +3,7 @@ using Slipe.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ServerSide
 {
@@ -16,11 +17,7 @@ namespace ServerSide
         {
             this.ID = name;
             this.amount = a;
-            foreach (vPlayer player in ElementManager.Instance.GetByType<Player>())
-            {
-                if (player.accountID == playerid)
-                    this.Owner = player;
-            }
+            this.Owner = (vPlayer)ElementManager.Instance.GetByType<Player>().FirstOrDefault(e => ((vPlayer)e).accountID == playerid);
         }
     }
 }

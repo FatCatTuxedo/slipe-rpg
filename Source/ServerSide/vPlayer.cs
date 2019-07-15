@@ -24,15 +24,13 @@ namespace ServerSide
         public bool combatTag = false;
         public bool suicide = false;
         public int suicideTimer = 0;
-        public Dictionary<string, PlayerItem> Inventory;
         public vJob Job;
-        public Dictionary<string, PlayerItem> inventory = new Dictionary<string, PlayerItem>();
+        public Dictionary<string, PlayerItem> Inventory;
         public vPlayer(MtaElement element) : base(element)
         {
             OnJoin += (Player p, OnJoinEventArgs eventArgs) =>
             {
                 loggedin = false;
-                ChatBox.WriteLine("Please login with /slogin", p, Color.Orange);
                 p.SetHudComponentVisible(HudComponent.area_name, false);
                 p.SetHudComponentVisible(HudComponent.vehicle_name, false);
                 p.NametagColor = Color.Black;
@@ -74,6 +72,7 @@ namespace ServerSide
             BankBalance = bank;
             StaffLevel = staff;
             setJob(job);
+            Inventory = new Dictionary<string, PlayerItem>();
             _ = dbManager.getPlayerItems(this);
 
 

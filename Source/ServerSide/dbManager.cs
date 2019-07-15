@@ -3,12 +3,28 @@ using Slipe.Server.Peds;
 using Slipe.Sql;
 using Slipe.Shared.Cryptography;
 using Slipe.Server.IO;
-using System;
+using Slipe.Shared.Rpc;
+using Slipe.Server.Rpc;
 
 namespace ServerSide
 {
+    public class LoginRpc : IRpc
+    {
+        public string username;
+        public string password;
+
+        // Parsing the single `dynamic` vlaue to the proper type fields
+        public LoginRpc(dynamic value)
+        {
+           this.username = (string)value.username;
+            this.password = (string)value.password;
+        }
+    }
     public static class dbManager
     {
+        //RpcManager.Instance.RegisterRPC<LoginRpc>("xoaLogin", HandleTestRPC);
+
+
         public static Database database = new Database(new MySqlConnectionString()
         {
             Hostname = "127.0.0.1",
@@ -25,6 +41,7 @@ namespace ServerSide
             int id;
             string username;
             string passhash = "";
+           
             var results = await database.Query("SELECT * FROM users WHERE username = '" + user + "'");
                 id = results[0]["id"];
                 username = results[0]["username"];
@@ -39,6 +56,8 @@ namespace ServerSide
             else
             {
                 ChatBox.WriteLine("Wrong login info.", player, Slipe.Shared.Utilities.Color.Red);
+                Slipe.MtaDefinitions.MtaServer.KickPlayer(player.MTAElement, "Xoa", "Invalid login info");
+                
             }
 
         }

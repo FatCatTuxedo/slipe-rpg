@@ -9,17 +9,26 @@ namespace ServerSide
 {
     class Commands
     {
+        public static string[] commandList =
+        {
+            "kill",
+            "slogin",
+            "sregister",
+            "balance",
+            "setskin",
+            "staff",
+            "staffg",
+            "quitjob",
+            "criminal",
+            "gangster",
+            "checkitems"
+        };
         public static void addCommands()
         {
-            new CommandHandler("kill", HandleCommand);
-            new CommandHandler("slogin", HandleCommand);
-            new CommandHandler("sregister", HandleCommand);
-            new CommandHandler("balance", HandleCommand);
-            new CommandHandler("setskin", HandleCommand);
-            new CommandHandler("staff", HandleCommand);
-            new CommandHandler("quitjob", HandleCommand);
-            new CommandHandler("criminal", HandleCommand);
-            new CommandHandler("gangster", HandleCommand);
+            foreach (string cmd in commandList)
+            {
+                new CommandHandler(cmd, HandleCommand);
+            }
         }
         public static void HandleCommand(Player player, string command, string[] arguments)
         {
@@ -43,6 +52,9 @@ namespace ServerSide
                         p.suicideTimer = 0;
                     }
                     break;
+                    case "checkitems":
+                        ChatBox.WriteLine(p.Inventory["Iron"].amount.ToString(), p, Color.AliceBlue);
+                        break;
                 #endregion
 
                 #region Login Commands (will be removed once GUI is done)
@@ -85,6 +97,21 @@ namespace ServerSide
                         {
                             p.setJob("L" + p.StaffLevel + " Staff");
                             p.Model = 217;
+                        }
+                    }
+                    break;
+                case "staffg":
+                    if (Checking.hasStaffPermission(0.1f, p, "/staffg"))
+                    {
+                        if (p.StaffLevel < 1 && p.StaffLevel > 0)
+                        {
+                            p.setJob("Helper");
+                            p.Model = 211;
+                        }
+                        else
+                        {
+                            p.setJob("L" + p.StaffLevel + " Staff");
+                            p.Model = 211;
                         }
                     }
                     break;

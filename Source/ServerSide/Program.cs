@@ -7,6 +7,7 @@ using Slipe.Server.IO;
 using Slipe.Shared.Utilities;
 using Slipe.Shared.Peds;
 using System.Collections.Generic;
+using Slipe.Server.Rpc;
 
 namespace ServerSide
 {
@@ -19,6 +20,7 @@ namespace ServerSide
         }
         public Program()
         {
+            RpcManager.Instance.RegisterRPC<LoginRpc>("xoaLogin", HandleTestRPC);
             //HandlingManager.loadHandling();
             mPlayer.Init();
             Commands.addCommands();
@@ -26,9 +28,14 @@ namespace ServerSide
             mJob.loadJobs();
             
             HandleRestart();
-            
+            Resource.Get("XoaWatermarks").Start();
+            Resource.Get("XoaWepDamage").Start();
+            Resource.Get("XoaStaffSkin").Start();
         }
-
+        public void HandleTestRPC(Player p, LoginRpc arguments)
+        {
+            _ = dbManager.AttemptLogin(p, arguments.username, arguments.password);
+        }
         private void HandleRestart()
         {
             foreach (vPlayer player in ElementManager.Instance.GetByType<Player>())
