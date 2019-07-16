@@ -4,6 +4,8 @@ using Slipe.Shared.Utilities;
 using System;
 using Slipe.Shared.Exceptions;
 using Slipe.Server.Vehicles;
+using Slipe.Server.Elements;
+using Slipe.Shared.Elements;
 
 namespace ServerSide
 {
@@ -21,8 +23,31 @@ namespace ServerSide
             "quitjob",
             "criminal",
             "gangster",
-            "checkitems"
+            "checkitems",
+            "savedata",
+            "xc",
+            "main"
         };
+        public static string getCityCode(vPlayer p)
+        {
+            string city = ElementExtensions.GetZoneName(p, true);
+            switch (city)
+            {
+                case "Los Santos":
+                case "Red County":
+                case "Flint County":
+                    return "LS";
+                case "Bone County":
+                case "Las Venturas":
+                    return "LV";
+                case "San Fierro":
+                case "Whetstone":
+                case "Tierra Robada":
+                    return "SF";
+                default:
+                    return "SA";
+            }
+        }
         public static void addCommands()
         {
             foreach (string cmd in commandList)
@@ -35,6 +60,24 @@ namespace ServerSide
             vPlayer p = (vPlayer)player;
             switch (command)
             {
+                #region temp commands
+                case "checkitems":
+                    ChatBox.WriteLine(p.Inventory["Iron"].amount.ToString(), p, Color.AliceBlue);
+                    break;
+                #endregion
+
+                #region Chat
+                    case "main":
+                        mPlayer.sendGlobalMessage("main", "#" + mPlayer.HexCodeFromName(p) + "(" + getCityCode(p) + ") " + p.Name + ": #FFFFFF" + String.Join("", arguments));
+                    break;
+                    case "xc":
+                    if (Checking.hasStaffPermission(0.1f, p, "/xc"))
+                    {
+                        mPlayer.sendGlobalMessage("staff", "#" + mPlayer.HexCodeFromName(p) + "(STAFF) " + p.Name + ": #FFFFFF" + String.Join("", arguments));
+                    }
+                    break;
+                #endregion
+
                 #region General Gameplay Commands
                 case "kill":
                     if (p.suicide)
@@ -52,9 +95,6 @@ namespace ServerSide
                         p.suicideTimer = 0;
                     }
                     break;
-                    case "checkitems":
-                        ChatBox.WriteLine(p.Inventory["Iron"].amount.ToString(), p, Color.AliceBlue);
-                        break;
                 #endregion
 
                 #region Login Commands (will be removed once GUI is done)
@@ -86,33 +126,17 @@ namespace ServerSide
 
                 #region Staff Commands
                 case "staff":
-                    if (Checking.hasStaffPermission(0.1f, p, "/staff"))
+                    if (Checking.hasStaffPermission(1, p, "/staff"))
                     {
-                        if (p.StaffLevel < 1 && p.StaffLevel > 0)
-                        {
-                            p.setJob("Helper");
+                        p.setJob("L" + p.StaffLevel + " Staff");
                             p.Model = 217;
-                        }
-                        else
-                        {
-                            p.setJob("L" + p.StaffLevel + " Staff");
-                            p.Model = 217;
-                        }
                     }
                     break;
                 case "staffg":
-                    if (Checking.hasStaffPermission(0.1f, p, "/staffg"))
+                    if (Checking.hasStaffPermission(1, p, "/staffg"))
                     {
-                        if (p.StaffLevel < 1 && p.StaffLevel > 0)
-                        {
-                            p.setJob("Helper");
-                            p.Model = 211;
-                        }
-                        else
-                        {
                             p.setJob("L" + p.StaffLevel + " Staff");
                             p.Model = 211;
-                        }
                     }
                     break;
                 case "setskin":

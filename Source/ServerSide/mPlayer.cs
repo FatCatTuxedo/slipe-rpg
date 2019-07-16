@@ -1,6 +1,8 @@
 ﻿using Slipe.Server.Peds;
 using Slipe.Shared.Elements;
 using System.Timers;
+using Slipe.Server.IO;
+using Slipe.Shared.Utilities;
 
 namespace ServerSide
 {
@@ -17,6 +19,30 @@ namespace ServerSide
             };
             userChecker.AutoReset = true;
             userChecker.Start();
+        }
+        public static string HexCodeFromName(vPlayer p)
+        {
+            Color myColor = p.NametagColor;
+
+            return myColor.R.ToString("X2") + myColor.G.ToString("X2") + myColor.B.ToString("X2");
+        }
+        public static void sendGlobalMessage(string type, string message)
+        {
+            switch (type)
+            {
+                case "staff":
+                    foreach (vPlayer p in ElementManager.Instance.GetByType<Player>())
+                    {
+                        if (p.StaffLevel >= 1)
+                        {
+                            ChatBox.WriteLine(message, p, Color.White, true);
+                        }
+                    }
+                break;
+                    case "main":
+                        ChatBox.WriteLine(message, Color.White, true);
+                    break;
+            }
         }
 
         private static void checkUsers()

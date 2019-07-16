@@ -32,10 +32,11 @@ namespace ClientSide
             Button sLogin = new Button(new Vector2(0.415f, 0.7f), new Vector2(0.25f, 0.2f), "Login", true, Login);
             Cursor.SetVisible(true);
             Login.Visible = true;
-            
-           
-            
-            
+            Camera.Instance.Fade(Slipe.Shared.Rendering.CameraFade.In);
+            Camera.Instance.SetMatrix(new Vector3(2729.7429199219f, -2300.41015625f, 10.981800079346f), new Vector3 (2729.4001464844f, -2306.2919921875f, 10.65811252594f), 0, 70);
+
+
+
             sLogin.OnMouseDown += (GuiElement source, OnMouseDownEventArgs eventArgs) =>
                 {
                     ChatBox.WriteLine("pressed login", Slipe.Shared.Utilities.Color.Red);

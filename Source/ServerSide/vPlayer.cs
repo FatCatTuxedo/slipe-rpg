@@ -33,6 +33,7 @@ namespace ServerSide
                 loggedin = false;
                 p.SetHudComponentVisible(HudComponent.area_name, false);
                 p.SetHudComponentVisible(HudComponent.vehicle_name, false);
+                p.SetHudComponentVisible(HudComponent.radar, false);
                 p.NametagColor = Color.Black;
                 p.BlurLevel = 0;
             };
@@ -53,6 +54,7 @@ namespace ServerSide
                 if (loggedin)
                 {
                 saveData();
+
                 }
             };
 
@@ -74,7 +76,7 @@ namespace ServerSide
             setJob(job);
             Inventory = new Dictionary<string, PlayerItem>();
             _ = dbManager.getPlayerItems(this);
-
+            this.SetHudComponentVisible(HudComponent.radar, true);
 
         }
         public void respawn(int dim, int i, float x, float y, float z, int rot)
