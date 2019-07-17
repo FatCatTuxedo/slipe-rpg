@@ -29,11 +29,11 @@ namespace ServerSide
             mJob.loadJobs();
             
             HandleRestart();
-            Resource.Get("XoaWatermarks").Start();
-            Resource.Get("XoaWepDamage").Start();
-            Resource.Get("XoaStaffSkin").Start();
-
-            
+            Resource.Get("XoaLUA-PlayerBlips").Start();
+            Resource.Get("XoaLUA-SkinMods").Start();
+            Resource.Get("XoaLUA-StaffMisc").Start();
+            Resource.Get("XoaLUA-WepDamage").Start();
+            Resource.Get("XoaLUA-Map-Fixes").Start();
         }
 
 
