@@ -15,7 +15,8 @@ namespace ServerSide
             Gangster = 4,
             CivNoFunction = 5,
             Pilot = 6,
-            Trucker = 7
+            Trucker = 7,
+            Medic = 8
         };
 
         public static void loadJobs()

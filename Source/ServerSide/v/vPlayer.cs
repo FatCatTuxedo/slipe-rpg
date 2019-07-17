@@ -106,22 +106,22 @@ namespace ServerSide
             this.Job = mJob.Jobs[job];
             this.NametagColor = Job.Color;
             this.Team = Job.Team;
-            //Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", this.element, "job", "", 0, 0, 0);
-            //Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", this.element, "job", Job.Title, Job.Color.R, Job.Color.G, Job.Color.B);
+            Program.dx.Invoke("add", this.MTAElement, "job", Job.Title, Job.Color.R, Job.Color.G, Job.Color.B);
         }
         public void quitJob()
         {
-            this.Job = mJob.Jobs["Unemployed"];
-            this.NametagColor = Job.Color;
-            this.Team = Job.Team;
+            setJob("Unemployed");
             this.Model = skin;
         }
 
         public void editMoney(int amount)
         {
+            Program.dx.Invoke("moneyText", this.MTAElement, this.Money, (this.Money + amount));
             if (amount < 0)
             {
+                
                 TakeMoney(System.Math.Abs(amount));
+                
                 //Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", null);
                 //Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", this.element, "money", "-$" + System.Math.Abs(amount), 255, 0, 0);
             }

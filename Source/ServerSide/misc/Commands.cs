@@ -6,6 +6,7 @@ using Slipe.Shared.Exceptions;
 using Slipe.Server.Vehicles;
 using Slipe.Server.Elements;
 using Slipe.Shared.Elements;
+using ServerSide.misc;
 
 namespace ServerSide
 {
@@ -26,28 +27,10 @@ namespace ServerSide
             "checkitems",
             "savedata",
             "xc",
-            "main"
+            "main",
+            "police",
+            "medic"
         };
-        public static string getCityCode(vPlayer p)
-        {
-            string city = ElementExtensions.GetZoneName(p, true);
-            switch (city)
-            {
-                case "Los Santos":
-                case "Red County":
-                case "Flint County":
-                    return "LS";
-                case "Bone County":
-                case "Las Venturas":
-                    return "LV";
-                case "San Fierro":
-                case "Whetstone":
-                case "Tierra Robada":
-                    return "SF";
-                default:
-                    return "SA";
-            }
-        }
         public static void addCommands()
         {
             foreach (string cmd in commandList)
@@ -62,13 +45,13 @@ namespace ServerSide
             {
                 #region temp commands
                 case "checkitems":
-                    ChatBox.WriteLine(p.Inventory["Iron"].amount.ToString(), p, Color.AliceBlue);
+                    p.editMoney(-100);
                     break;
                 #endregion
 
                 #region Chat
                     case "main":
-                        mPlayer.sendGlobalMessage("main", "#" + mPlayer.HexCodeFromName(p) + "(" + getCityCode(p) + ") " + p.Name + ": #FFFFFF" + String.Join("", arguments));
+                        mPlayer.sendGlobalMessage("main", "#" + mPlayer.HexCodeFromName(p) + "(" + Utils.getCityCode(p) + ") " + p.Name + ": #FFFFFF" + String.Join("", arguments));
                     break;
                     case "xc":
                     if (Checking.hasStaffPermission(0.1f, p, "/xc"))
@@ -118,9 +101,16 @@ namespace ServerSide
                     break;
                 case "criminal":
                     p.setJob("Criminal");
+                    Program.dx.Invoke("shout", p.MTAElement, "You are now a criminal", 255, 0, 0);
                     break;
                 case "gangster":
                     p.setJob("Gangster");
+                    break;
+                case "police":
+                    p.setJob("Police Officer");
+                    break;
+                case "medic":
+                    p.setJob("Paramedic");
                     break;
                 #endregion
 

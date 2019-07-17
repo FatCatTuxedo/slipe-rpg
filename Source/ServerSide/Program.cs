@@ -14,6 +14,7 @@ namespace ServerSide
 {
     class Program
     {
+        public static Resource dx;
         static void Main(string[] args)
         {
             new Program();
@@ -29,11 +30,15 @@ namespace ServerSide
             mJob.loadJobs();
             
             HandleRestart();
-            Resource.Get("XoaLUA-PlayerBlips").Start();
             Resource.Get("XoaLUA-SkinMods").Start();
             Resource.Get("XoaLUA-StaffMisc").Start();
             Resource.Get("XoaLUA-WepDamage").Start();
-            Resource.Get("XoaLUA-Map-Fixes").Start();
+            Resource.Get("XoaLUA-MapFixes").Start();
+            Resource.Get("XoaLUA-Speaker").Start();
+            Resource.Get("XoaLUA-Sirens").Start();
+            Resource.Get("XoaLUA-Blips").Start();
+            dx = Resource.Get("XoaLuadx");
+            dx.Start();
         }
 
 
