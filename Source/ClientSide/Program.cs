@@ -9,6 +9,8 @@ using Slipe.Client.Gui.Events;
 using Slipe.Shared.Rpc;
 using Slipe.Client.Rpc;
 using Slipe.Client;
+using Slipe.Client.Peds;
+using Slipe.Client.Events;
 
 namespace ClientSide
 {
@@ -35,7 +37,16 @@ namespace ClientSide
             Camera.Instance.Fade(Slipe.Shared.Rendering.CameraFade.In);
             Camera.Instance.SetMatrix(new Vector3(2729.7429199219f, -2300.41015625f, 10.981800079346f), new Vector3 (2729.4001464844f, -2306.2919921875f, 10.65811252594f), 0, 70);
 
+            LocalPlayer.Instance.OnDamage += (Ped source, OnDamageEventArgs eventArgs) =>
+            {
+                if (LocalPlayer.Instance.Team.Name == "Administrative Staff")
+                    Event.Cancel();
+            };
 
+            LocalPlayer.Instance.OnChoke += (LocalPlayer source, OnChokeEventArgs eventArgs) =>
+            {
+                Event.Cancel();
+            };
 
             sLogin.OnMouseDown += (GuiElement source, OnMouseDownEventArgs eventArgs) =>
                 {
