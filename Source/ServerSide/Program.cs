@@ -38,7 +38,12 @@ namespace ServerSide
             Resource.Get("XoaLUA-Speaker").Start();
             Resource.Get("XoaLUA-Sirens").Start();
             Resource.Get("XoaLUA-Blips").Start();
-            Resource.Get("XoaLUA-Misc").Start();
+            //Resource.Get("XoaLUA-Misc").Start(); -- steal from work pc >:(
+            Resource.Get("hd_radar").Start();
+            Resource.Get("hd_hud").Start();
+            Resource.Get("scoreboard").Start();
+            Resource.Get("admin").Start();
+            Resource.Get("killmessages").Start();
             dx = Resource.Get("XoaLuadx");
             dx.Start();
         }
