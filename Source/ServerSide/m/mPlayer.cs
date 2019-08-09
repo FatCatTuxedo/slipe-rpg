@@ -49,12 +49,16 @@ namespace ServerSide
         {
             try
             {
+                autosave++;
                 foreach (vPlayer player in ElementManager.Instance.GetByType<Player>())
                 {
 
                     if (player.loggedin)
                     {
-
+                        if (autosave >= 3600)
+                        {
+                            player.saveData();
+                        }
                         if (player.needsRespawn)
                         {
                             player.respawnTimer += 1;
@@ -77,6 +81,10 @@ namespace ServerSide
                             }
                         }
                     }
+                }
+                if (autosave >= 3600)
+                {
+                    autosave = 0;
                 }
             }
             catch { }

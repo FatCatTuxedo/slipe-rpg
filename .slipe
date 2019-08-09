@@ -112,6 +112,6 @@
     }
   ],
   "exports": [],
-  "clientMinVersion": null,
-  "serverMinVersion": null
+  "clientMinVersion": "1.5.5-9.14370",
+  "serverMinVersion": "1.5.5-9.14370"
 }

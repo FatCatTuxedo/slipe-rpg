@@ -63,19 +63,20 @@ namespace ServerSide
 
         public void saveData()
         {
-            dbManager.database.Exec("UPDATE users SET (skin, money, bank, staff_level, x, y, z, rot, dim, int, job) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?", skin, Money, BankBalance, StaffLevel, Position.X, Position.Y, Position.Z, Rotation, Dimension, Interior, Job.Title, accountID);
+            //dbManager.database.Exec("UPDATE users SET (skin, money, bank, staff_level, x, y, z, rot, dim, int, job) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?;", skin, Money, BankBalance, StaffLevel, Position.X, Position.Y, Position.Z, Rotation, Dimension, Interior, Job.Title, accountID);
+            dbManager.database.Exec("UPDATE `users` SET `skin` = ?, `money`=?, `bank` = ?, `staff_level` = ?, `x` = ?, `y` = ?, `z` = ?, `rot` = ?, `dim` = ?, `int` = ?, `job` = ? WHERE `id` = ?", skin, Money, BankBalance, StaffLevel, Position.X, Position.Y, Position.Z, Rotation.Z, Dimension, Interior, Job.ID, accountID);
         }
-        public void loadPlayerData(int money, int sskin, int bank, float staff, int dim, int i, float x, float y, float z, int rot, string job)
+        public void loadPlayerData(int money, int sskin, int bank, float staff, int dim, int i, float x, float y, float z, float rot, int job)
         {
             //set element data here for re-logging in after resource restart
             loggedin = true;
             Slipe.MtaDefinitions.MtaShared.SetElementData(this.element, "accountid", accountID, true);
             skin = sskin;
-            respawn(dim, i, x, y, z, rot);
+            respawn(dim, i, x, y, z, (int)rot);
             Money = money;
             BankBalance = bank;
             StaffLevel = staff;
-            setJob(job);
+            setJobviaID(job);
             Inventory = new Dictionary<string, PlayerItem>();
             _ = dbManager.getPlayerItems(this);
             this.SetHudComponentVisible(HudComponent.radar, true);
@@ -110,6 +111,14 @@ namespace ServerSide
             this.Team = Job.Team;
             Program.dx.Invoke("add", this.MTAElement, "job", Job.Title, Job.Color.R, Job.Color.G, Job.Color.B);
         }
+        public void setJobviaID(int job)
+        {
+
+            this.Job = mJob.getJobfromID(job);
+            this.NametagColor = Job.Color;
+            this.Team = Job.Team;
+            Program.dx.Invoke("add", this.MTAElement, "job", Job.Title, Job.Color.R, Job.Color.G, Job.Color.B);
+        }
         public void quitJob()
         {
             setJob("Unemployed");
@@ -123,15 +132,15 @@ namespace ServerSide
             {
                 
                 TakeMoney(System.Math.Abs(amount));
-                
-                //Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", null);
-                //Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", this.element, "money", "-$" + System.Math.Abs(amount), 255, 0, 0);
+
+                //Program.dx.Invoke("modTextBar", this.MTAElement, "money", "", 0, 0, 0);
+                Program.dx.Invoke("modTextBar", this.MTAElement, "money", "-$" + System.Math.Abs(amount), 255, 0, 0);
             }
             else
             {
                 GiveMoney(amount);
-                //Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", this.element, "money", "", 0, 0, 0);
-                //Slipe.Server.Resources.Resource.Get("XoaTxt").Invoke("modTextBar", this.element, "money", "$" + amount, 0, 255, 0);
+                //Program.dx.Invoke("modTextBar", this.MTAElement, "money", "", 0, 0, 0);
+                Program.dx.Invoke("modTextBar", this.MTAElement, "money", "$" + amount, 0, 255, 0);
             }
 
         }
@@ -151,6 +160,7 @@ namespace ServerSide
             else
             {
                 //not enough money in bank
+                Program.dx.Invoke("shout", this.MTAElement, "You lack the funds to make this withdrawal.", 255, 0, 0);
             }
         }
 
@@ -164,6 +174,7 @@ namespace ServerSide
             else
             {
                 //cant deposit money u dont have
+                Program.dx.Invoke("shout", this.MTAElement, "You lack the funds to make this deposit.", 255, 0, 0);
             }
         }
     }

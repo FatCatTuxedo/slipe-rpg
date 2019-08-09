@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerSide", "Source\ServerSide\ServerSide.csproj", "{C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientSide", "Source\ClientSide\ClientSide.csproj", "{ABE9713E-8B2B-48F4-9156-820A0BDC3285}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5} = {C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xoa", "Xoa", "{3BAE3D07-C859-4665-B92B-786ECB449FE8}"
 EndProject

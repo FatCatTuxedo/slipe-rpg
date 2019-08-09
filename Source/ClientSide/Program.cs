@@ -51,7 +51,8 @@ namespace ClientSide
             sLogin.OnMouseDown += (GuiElement source, OnMouseDownEventArgs eventArgs) =>
                 {
                     ChatBox.WriteLine("pressed login", Slipe.Shared.Utilities.Color.Red);
-                    RpcManager.Instance.TriggerRPC("xoaLogin", new LoginRpc(Username.Content, PW.Content));
+                    if (Username.Content != null)
+                        RpcManager.Instance.TriggerRPC("xoaLogin", new LoginRpc(Username.Content, PW.Content));
                     Login.Destroy();
                     Cursor.SetVisible(false);
                 };

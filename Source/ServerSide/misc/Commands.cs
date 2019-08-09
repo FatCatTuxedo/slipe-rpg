@@ -29,7 +29,8 @@ namespace ServerSide
             "xc",
             "main",
             "police",
-            "medic"
+            "medic",
+            "withdraw"
         };
         public static void addCommands()
         {
@@ -51,12 +52,12 @@ namespace ServerSide
 
                 #region Chat
                     case "main":
-                        mPlayer.sendGlobalMessage("main", "#" + mPlayer.HexCodeFromName(p) + "(" + Utils.getCityCode(p) + ") " + p.Name + ": #FFFFFF" + String.Join("", arguments));
+                        mPlayer.sendGlobalMessage("main", "#" + mPlayer.HexCodeFromName(p) + "(" + Utils.getCityCode(p) + ") " + p.Name + ": #FFFFFF" + Program.wrapParameters(arguments, 0));
                     break;
                     case "xc":
                     if (Checking.hasStaffPermission(0.1f, p, "/xc"))
                     {
-                        mPlayer.sendGlobalMessage("staff", "#" + mPlayer.HexCodeFromName(p) + "(STAFF) " + p.Name + ": #FFFFFF" + String.Join("", arguments));
+                        mPlayer.sendGlobalMessage("staff", "#" + mPlayer.HexCodeFromName(p) + "(STAFF) " + p.Name + ": #FFFFFF" + Program.wrapParameters(arguments, 0));
                     }
                     break;
                 #endregion
@@ -92,6 +93,14 @@ namespace ServerSide
                 #region Money related commands
                 case "balance":
                     ChatBox.WriteLine("Your Bank Balance is: $" + p.BankBalance, player, Color.GreenYellow);
+                    break;
+
+                case "withdraw":
+                    int amount = Convert.ToInt32(arguments[0]);
+                    if (amount > 0)
+                        p.withdrawBankMoney(amount);
+                    else
+                        Program.dx.Invoke("shout", p.MTAElement, "Nice try.", 255, 0, 0);
                     break;
                 #endregion
 

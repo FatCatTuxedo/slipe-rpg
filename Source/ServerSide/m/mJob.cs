@@ -24,5 +24,17 @@ namespace ServerSide
             Jobs = new Dictionary<string, vJob>();
             _ = dbManager.getJobs();
         }
+
+        public static vJob getJobfromID(int id)
+        {
+            foreach (vJob job in Jobs.Values)
+            {
+                if (job.ID == id)
+                {
+                    return job;
+                }
+            }
+            return Jobs["Unemployed"];
+        }
     }
 }

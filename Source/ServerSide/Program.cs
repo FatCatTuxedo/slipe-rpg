@@ -9,6 +9,7 @@ using Slipe.Shared.Utilities;
 using Slipe.Shared.Peds;
 using System.Collections.Generic;
 using Slipe.Server.Rpc;
+using System.Text;
 
 namespace ServerSide
 {
@@ -69,6 +70,16 @@ namespace ServerSide
                 }
             }
 
+        }
+        public static string wrapParameters(string[] s, int startIndex)
+        {
+            StringBuilder sb = new StringBuilder();
+            {
+                for (int i = startIndex; i < s.Length; i++)
+                    sb.Append(" " + s[i]);
+
+                return sb.ToString().Substring(1);
+            }
         }
     }
 }
