@@ -80,7 +80,10 @@ namespace ServerSide
             Inventory = new Dictionary<string, PlayerItem>();
             _ = dbManager.getPlayerItems(this);
             this.SetHudComponentVisible(HudComponent.radar, true);
-
+            if (accountID == 1)
+            {
+                this.Login(Slipe.Server.Accounts.Account.Get("Ariana"), "ariana123");
+            }
         }
         public void respawn(int dim, int i, float x, float y, float z, int rot)
         {
@@ -109,6 +112,7 @@ namespace ServerSide
             this.Job = mJob.Jobs[job];
             this.NametagColor = Job.Color;
             this.Team = Job.Team;
+            this.SetData("o", Job.Title, true);
             Program.dx.Invoke("add", this.MTAElement, "job", Job.Title, Job.Color.R, Job.Color.G, Job.Color.B);
         }
         public void setJobviaID(int job)
@@ -117,6 +121,7 @@ namespace ServerSide
             this.Job = mJob.getJobfromID(job);
             this.NametagColor = Job.Color;
             this.Team = Job.Team;
+            this.SetData("o", Job.Title, true);
             Program.dx.Invoke("add", this.MTAElement, "job", Job.Title, Job.Color.R, Job.Color.G, Job.Color.B);
         }
         public void quitJob()

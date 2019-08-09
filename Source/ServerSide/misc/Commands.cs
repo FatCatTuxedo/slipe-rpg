@@ -30,7 +30,8 @@ namespace ServerSide
             "main",
             "police",
             "medic",
-            "withdraw"
+            "withdraw",
+            "forcesave"
         };
         public static void addCommands()
         {
@@ -124,6 +125,12 @@ namespace ServerSide
                 #endregion
 
                 #region Staff Commands
+                case "forcesave":
+                    if (Checking.hasStaffPermission(1, p, "/forcesave"))
+                    {
+                        p.saveData();
+                    }
+                    break;
                 case "staff":
                     if (Checking.hasStaffPermission(1, p, "/staff"))
                     {

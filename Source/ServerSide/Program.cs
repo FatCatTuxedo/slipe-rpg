@@ -38,6 +38,7 @@ namespace ServerSide
             Resource.Get("XoaLUA-Speaker").Start();
             Resource.Get("XoaLUA-Sirens").Start();
             Resource.Get("XoaLUA-Blips").Start();
+            Resource.Get("XoaLUA-Misc").Start();
             dx = Resource.Get("XoaLuadx");
             dx.Start();
         }
@@ -60,13 +61,13 @@ namespace ServerSide
                     }
                     else
                     {
-                        Slipe.MtaDefinitions.MtaServer.KickPlayer(player.MTAElement, "Xoa", "System restarted but you were not logged in.");
+                        player.Redirect("");
 
                     }
                 }
                 catch
                 {
-                    Slipe.MtaDefinitions.MtaServer.KickPlayer(player.MTAElement, "Xoa", "System restarted but you were not logged in.");
+                    player.Redirect("");
                 }
             }
 
